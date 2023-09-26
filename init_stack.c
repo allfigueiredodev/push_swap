@@ -6,13 +6,21 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:12 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/25 19:57:49 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:48:37 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void init_stack(char *nbr_list, t_list **stack)
+void init_stack(t_data **data)
+{
+	*data = (t_data *)malloc(sizeof(t_data*));
+	(*data)->stack_a = (t_list **)malloc(sizeof(t_list *));
+	(*data)->stack_b = (t_list **)malloc(sizeof(t_list *));
+	(*data)->total_nbrs = 0;
+}
+
+void init_data(char *nbr_list, t_list **stack)
 {
 	int i;
 	char **nbrs;

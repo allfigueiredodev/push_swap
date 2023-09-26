@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/25 16:00:08 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:49:05 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int main(int argc, char **argv)
 {
+	t_data *data;
+	init_stack(&data);
 	if(argc < 2)
 		return (0);
-	init_stack(argv[1]);
+	init_data(argv[1], data->stack_a);
 }

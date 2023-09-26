@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/25 20:01:52 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:47:29 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_doublylist
 	
 }	t_doublylist;
 
-void init_stack(char *nbr_list, t_list **stack);
+void init_data(char *nbr_list, t_list **stack);
 void print_list(t_list **stack);
-
+void init_stack(t_data **data);
 #endif
