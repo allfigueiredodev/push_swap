@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/26 23:03:10 by aperis-p         ###   ########.fr       */
+/*   Created: 2023/09/26 16:29:31 by aperis-p          #+#    #+#             */
+/*   Updated: 2023/09/26 22:57:38 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+void delete_content(void *content)
 {
-	t_data data;
-	
-	if(argc < 2)
-		return (0);
-	init_stack(&data);
-	init_data(argv[1], &data);
-	if(!dup_check(&data))
+	if(!content)
+		return ;
+	free(content);
+}
+
+void	free_nbrs(char **nbrs)
+{
+	int	i;
+
+	i = 0;
+	while (nbrs[i])
 	{
-		printf("duplicated\n");
-		free_data(&data);
-		return(0);
+		free(nbrs[i]);
+		i++;
 	}
-	free_data(&data);
+	free(nbrs);
+}
+
+void free_data(t_data *data)
+{
+	ft_lstclear(&data->stack_a , delete_content);
+	ft_lstclear(&data->stack_b , delete_content);
 }
