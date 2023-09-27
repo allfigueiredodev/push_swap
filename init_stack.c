@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:12 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/26 21:23:45 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:49:35 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void init_stack(t_data *data)
 {
-	// data = (t_data *)malloc(sizeof(t_data*));
 	data->stack_a = (t_list *)ft_calloc(1, sizeof(t_list));
 	data->stack_b = (t_list *)ft_calloc(1, sizeof(t_list));
 	data->total_nbrs = 0;
@@ -39,7 +38,10 @@ void init_data(char *nbr_list, t_data *data)
 		atoied = (int *)ft_calloc(1, sizeof(int));
 		*atoied = ft_atoi(nbrs[i]);
 		if(!data->stack_a->content)
-			data->stack_a = ft_lstnew(atoied);
+		{
+			free(data->stack_a);
+			data->stack_a = ft_lstnew(atoied);	
+		}
 		else
 			ft_lstadd_back(&data->stack_a, ft_lstnew(atoied));
 		i++;
