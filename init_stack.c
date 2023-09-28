@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:12 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/27 17:49:35 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/27 21:48:15 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void init_stack(t_data *data)
 	}
 }
 
-void init_data(char *nbr_list, t_data *data)
+void init_data_from_string(char *nbr_list, t_data *data)
 {
 	int i;
 	char **nbrs;
@@ -46,9 +46,19 @@ void init_data(char *nbr_list, t_data *data)
 			ft_lstadd_back(&data->stack_a, ft_lstnew(atoied));
 		i++;
 	}
+	count_list_size(data);
 	free_nbrs(nbrs);
-	// print_list(data->stack_a);
+	print_list(data->stack_a);
 }
+
+// void init_data_from_arguments(char **argv, t_data *data)
+// {
+// 	argv++;
+// 	while(*argv)
+// 	{
+// 		data->stack_a
+// 	}
+// }
 
 // int main(void)
 // {
