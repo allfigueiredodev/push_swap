@@ -6,11 +6,20 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:50:56 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/27 21:56:05 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:42:30 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_for_digit(char *c)
+{
+	while(*c == '+' || *c == '-')
+		c++;
+	if (*c >= '0' && *c <= '9')
+		return (1);
+	return (0);
+}
 
 void count_list_size(t_data *data)
 {

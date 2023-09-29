@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/27 21:55:47 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:35:04 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int main(int argc, char **argv)
 	if(argc < 2)
 		return (0);
 	init_stack(&data);
-	if(argc == 2)
-		init_data_from_string(argv[1], &data);
-	else if (argc > 2)
-		init_data_from_arguments(argv, &data);
+	init_data(argc, argv, &data);
 	if(!dup_check(data))
 	{
 		ft_printf("duplicated\n");
