@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:12 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/28 21:06:05 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:37:40 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ void init_stack(t_data *data)
 	data->total_nbrs = 0;
 	if(!data->stack_a || !data->stack_b)
 	{
-		ft_printf("Bad allocation\n");
-		return ;
+		if(data->stack_a)
+			free(data->stack_a);
+		if(data->stack_b)
+			free(data->stack_b);
+		ft_putstr_fd("Error\n", 2);
+		exit(0);
 	}
 }
 
-void init_data_from_arguments(int argc, char **argv, t_data *data)
+int init_data_from_arguments(int argc, char **argv, t_data *data)
 {
 	int total_arguments;
 	int i;
@@ -35,7 +39,9 @@ void init_data_from_arguments(int argc, char **argv, t_data *data)
 	while(i <= total_arguments)
 	{
 		nbr = (int *)ft_calloc(1, sizeof(int));
-		*nbr = ft_atoi(argv[i]);
+		*nbr = ft_atol(argv[i]);
+		if(*nbr < INT_MIN || *nbr > INT_MAX)
+			return(0);
 		if(check_for_digit(argv[i]) && !data->stack_a->content)
 			data->stack_a = ft_lstnew(nbr);
 		else if(check_for_digit(argv[i]) && data->stack_a)
@@ -43,21 +49,28 @@ void init_data_from_arguments(int argc, char **argv, t_data *data)
 		i++;
 	}
 	print_list(data->stack_a);
+	return(1);
 }
 
-void init_data_from_string(char *nbr_list, t_data *data)
+int init_data_from_string(char *nbr_list, t_data *data)
 {
 	int i;
 	char **nbrs;
-	int *atoied;
+	long *atoied;
 	if(!nbr_list)
-		return ;
+		return(0);
 	nbrs = ft_split(nbr_list, ' ');
 	i = 0;
 	while(nbrs[i])
 	{
-		atoied = (int *)ft_calloc(1, sizeof(int));
-		*atoied = ft_atoi(nbrs[i]);
+		atoied = (long *)ft_calloc(1, sizeof(long));
+		*atoied = ft_atol(nbrs[i]);
+		if(*atoied < INT_MIN || *atoied > INT_MAX)
+		{
+			free(atoied);
+			free_nbrs(nbrs);
+			return(0);
+		}
 		if(!data->stack_a->content)
 		{
 			free(data->stack_a);
@@ -70,14 +83,22 @@ void init_data_from_string(char *nbr_list, t_data *data)
 	count_list_size(data);
 	free_nbrs(nbrs);
 	print_list(data->stack_a);
+	return(1);
 }
 
-void init_data(int argc, char **argv, t_data *data)
+int init_data(int argc, char **argv, t_data *data)
 {
 	if(argc == 2)
-		init_data_from_string(argv[1], &data);
+	{
+		if(!init_data_from_string(argv[1], data))
+			return(0);
+	}
 	else if (argc > 2)
-		init_data_from_arguments(argc, argv, &data);
+	{
+		if(!init_data_from_arguments(argc, argv, data))
+			return(0);
+	}
+	return(1);
 }
 
 // int main(void)

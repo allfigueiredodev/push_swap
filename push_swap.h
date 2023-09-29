@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/28 21:06:30 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:16:33 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "./libft/libft.h"
 
 typedef struct s_data
@@ -33,8 +34,8 @@ typedef struct s_doublylist
 	
 }	t_doublylist;
 
-void 	init_data_from_string(char *nbr_list, t_data *data);
-void 	init_data_from_arguments(int argc, char **argv, t_data *data);
+int 	init_data_from_string(char *nbr_list, t_data *data);
+int 	init_data_from_arguments(int argc, char **argv, t_data *data);
 void 	print_list(t_list *stack);
 void 	init_stack(t_data *data);
 int		dup_check(t_data data);
@@ -44,6 +45,6 @@ void 	delete_content(void *content);
 void	free_nbrs(char **nbrs);
 void 	count_list_size(t_data *data);
 int		check_for_digit(char *c);
-void 	init_data(int argc, char **argv, t_data *data);
+int 	init_data(int argc, char **argv, t_data *data);
 
 #endif
