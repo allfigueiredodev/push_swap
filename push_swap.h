@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/29 16:16:33 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/09/29 20:54:44 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ typedef struct s_data
 	struct s_list *stack_b;
 }	t_data;
 
-typedef struct s_doublylist
+typedef struct s_dclist
 {
 	int index;
-	struct s_doublylist *next;
-	struct s_doublylist *prev;
+	int content;
+	struct s_dclist *next;
+	struct s_dclist *prev;
 	
-}	t_doublylist;
+}	t_dclist;
 
 int 	init_data_from_string(char *nbr_list, t_data *data);
 int 	init_data_from_arguments(int argc, char **argv, t_data *data);
