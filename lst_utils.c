@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:33:49 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/02 21:39:07 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:16:08 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,46 +112,46 @@ t_dclist	*lst_new_node(int content)
 	return (&*node);
 }
 
-int main(void)
-{
-	t_dclist *node1;
-	// t_dclist node2;
-	// t_dclist node3;
-	// node1 = (t_dclist *)ft_calloc(1, sizeof(t_dclist));
-	// if(!node1)
-	// 	return(0);
-	// node1.index = 0;
-	// node2.index = 1;
-	// node3.index = 2;
-	// node1.next = &node2;
-	// node1.prev = &node3;
-	// node2.next = &node3;
-	// node2.prev = &node1;
-	// node3.next = &node1;
-	// node3.prev = &node2;	
-	// print_dlist(&node1);
-	// ft_printf("%d\n", dc_lstsize(&node1));
-	// dc_lst_last(&node1);
-	node1 = lst_new_node(42);
-	// lst_prev_next(&node1, lst_new_node(42));
-	lst_prev_next(&node1, lst_new_node(43));
-	lst_prev_next(&node1, lst_new_node(44));
-	lst_prev_next(&node1, lst_new_node(45));
-	lst_prev_next(&node1, lst_new_node(46));
-	lst_prev_next(&node1, lst_new_node(47));
-	lst_prev_next(&node1, lst_new_node(48));
-	lst_prev_next(&node1, lst_new_node(49));
-	lst_prev_next(&node1, lst_new_node(50));
-	// node1 = lst_new_node(43);
-	// node1 = lst_new_node(44);
-	print_dlist(node1);
-	// ft_printf("content: %d\n", node1->content);
+// int main(void)
+// {
+// 	t_dclist *node1;
+// 	// t_dclist node2;
+// 	// t_dclist node3;
+// 	// node1 = (t_dclist *)ft_calloc(1, sizeof(t_dclist));
+// 	// if(!node1)
+// 	// 	return(0);
+// 	// node1.index = 0;
+// 	// node2.index = 1;
+// 	// node3.index = 2;
+// 	// node1.next = &node2;
+// 	// node1.prev = &node3;
+// 	// node2.next = &node3;
+// 	// node2.prev = &node1;
+// 	// node3.next = &node1;
+// 	// node3.prev = &node2;	
+// 	// print_dlist(&node1);
+// 	// ft_printf("%d\n", dc_lstsize(&node1));
+// 	// dc_lst_last(&node1);
+// 	node1 = lst_new_node(42);
+// 	// lst_prev_next(&node1, lst_new_node(42));
+// 	lst_prev_next(&node1, lst_new_node(43));
+// 	lst_prev_next(&node1, lst_new_node(44));
+// 	lst_prev_next(&node1, lst_new_node(45));
+// 	lst_prev_next(&node1, lst_new_node(46));
+// 	lst_prev_next(&node1, lst_new_node(47));
+// 	lst_prev_next(&node1, lst_new_node(48));
+// 	lst_prev_next(&node1, lst_new_node(49));
+// 	lst_prev_next(&node1, lst_new_node(50));
+// 	// node1 = lst_new_node(43);
+// 	// node1 = lst_new_node(44);
+// 	print_dlist(node1);
+// 	// ft_printf("content: %d\n", node1->content);
 	
-	// ft_printf("content: %d\n", node1->next->content);
-	// ft_printf("content: %d\n", node1->prev->content);
-	// lst_prev_next(&node1, lst_new_node(42));
-	// lst_prev_next(&node1, lst_new_node(43));
-	// lst_prev_next(&node1, lst_new_node(44));
-	// lst_prev_next(&node1, lst_new_node(45));
-	// lst_prev_next(&node1, lst_new_node(46));	
-}
+// 	// ft_printf("content: %d\n", node1->next->content);
+// 	// ft_printf("content: %d\n", node1->prev->content);
+// 	// lst_prev_next(&node1, lst_new_node(42));
+// 	// lst_prev_next(&node1, lst_new_node(43));
+// 	// lst_prev_next(&node1, lst_new_node(44));
+// 	// lst_prev_next(&node1, lst_new_node(45));
+// 	// lst_prev_next(&node1, lst_new_node(46));	
+// }

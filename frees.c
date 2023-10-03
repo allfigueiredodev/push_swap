@@ -6,17 +6,29 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:29:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/09/27 17:32:19 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:01:31 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void delete_content(void *content)
+void	dc_lstclear(t_dclist **lst)
 {
-	if(!content)
+	t_dclist	*ptr;
+	t_dclist	*temp;
+
+	if (!*lst)
 		return ;
-	free(content);
+	ptr = (*lst);
+	*lst = (*lst)->next;
+	while ((*lst)->index != 0)
+	{
+		temp = (*lst)->next;
+		free(*lst);
+		(*lst) = temp;
+	}
+	free(*lst);
+	ptr = NULL;
 }
 
 void	free_nbrs(char **nbrs)
@@ -34,6 +46,6 @@ void	free_nbrs(char **nbrs)
 
 void free_data(t_data *data)
 {
-	ft_lstclear(&data->stack_a , delete_content);
-	ft_lstclear(&data->stack_b , delete_content);
+	dc_lstclear(&data->stack_a);
+	// dc_lstclear(&data->stack_b);
 }
