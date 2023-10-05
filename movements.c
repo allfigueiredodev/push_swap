@@ -6,30 +6,41 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:51:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/03 18:33:10 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:04:01 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sa(t_data *data)
-{
-	t_dclist *temp;
-	
-	if(dc_lstsize(data->stack_a) <= 1)
-		return ;
-	temp = data->stack_a;
-	data->stack_a->content = data->stack_a->next->content;
-	data->stack_a->next->content = temp->content;
-	print_dlist(data->stack_a);	
-}
 // sa (swap a): Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.
 
 // sb (swap b): Swap the first 2 elements at the top of stack b.
 // Do nothing if there is only one or no elements.
 
+void swap_single(t_dclist **list)
+{
+    t_dclist *temp;
+
+    if(dc_lstsize(*list) <= 1)
+        return ;
+    temp = (*list)->next;
+    (*list)->next = temp->next;
+    temp->next->prev = *list;
+    temp->next = *list;
+    temp->prev = (*list)->prev;
+    (*list)->prev->next = temp;
+    (*list)->prev = temp;
+    *list = temp;
+}
+
 // ss : sa and sb at the same time.
+
+void swap_both(t_dclist **list_a, t_dclist **list_b)
+{
+	swap_single(list_a);
+	swap_single(list_b);
+}
 
 // pa (push a): Take the first element at the top of b and put it at the top of a.
 // Do nothing if b is empty.

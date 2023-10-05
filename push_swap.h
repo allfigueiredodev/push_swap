@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/03 18:31:01 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/04 23:29:44 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int 		init_data_from_arguments(int argc, char **argv, t_data *data);
 void 		print_list(t_list *stack);
 void 		init_stack(t_data *data);
 int			dup_check(t_data data);
-int 		scan_list(t_dclist *head, int content);
+int 		scan_list(t_dclist *head, t_dclist *current);
 void 		free_data(t_data *data);
 void		free_nbrs(char **nbrs);
 void 		count_list_size(t_data *data);
@@ -52,6 +52,7 @@ t_dclist	*dc_lst_last(t_dclist *lst);
 void		lst_prev_next(t_dclist **alst, t_dclist *new);
 t_dclist	*lst_new_node(int content);
 void		dc_lstclear(t_dclist **lst);
-void		sa(t_data *data);
+void		swap(t_dclist **list);
+void		push_a(t_dclist **list_a, t_dclist **list_b);
 
 #endif
