@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/05 16:59:22 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:24:29 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ void		shift_up_both(t_dclist **list_a, t_dclist **list_b);
 void		shift_down_single(t_dclist **list);
 void		shift_down_both(t_dclist **list_a, t_dclist **list_b);
 void		push_b(t_dclist **list_a, t_dclist **list_b);
+void		push_a(t_dclist **list_b, t_dclist **list_a);
+void		lst_add_head(t_dclist **alst, t_dclist *new);
 
 #endif

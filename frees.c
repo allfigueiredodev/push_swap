@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:29:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/03 18:01:31 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:39:27 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	dc_lstclear(t_dclist **lst)
 		return ;
 	ptr = (*lst);
 	*lst = (*lst)->next;
-	while ((*lst)->index != 0)
+	while ((*lst) != ptr)
 	{
 		temp = (*lst)->next;
 		free(*lst);
@@ -47,5 +47,5 @@ void	free_nbrs(char **nbrs)
 void free_data(t_data *data)
 {
 	dc_lstclear(&data->stack_a);
-	// dc_lstclear(&data->stack_b);
+	dc_lstclear(&data->stack_b);
 }

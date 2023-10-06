@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:51:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/05 21:51:31 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:28:34 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,48 @@ void swap_both(t_dclist **list_a, t_dclist **list_b)
 	swap_single(list_b);
 }
 
+// pa (push a): Take the first element at the top of b and put it at the top of a.
+// Do nothing if b is empty.
+
+void push_a(t_dclist **list_b, t_dclist **list_a)
+{
+	t_dclist *temp;
+	int size;
+
+	if(!(*list_b))
+		return ;
+	size = dc_lstsize((*list_b));
+	temp = *list_b;
+	*list_b = (*list_b)->next;
+	(*list_b)->prev = temp->prev;
+	temp->prev->next = *list_b;
+	temp->next = temp;
+	temp->prev = temp;
+	if(!dc_lstsize((*list_a)))
+	{
+		free((*list_a));
+		*list_a = temp;
+	}
+	else if(size == 1)
+	{
+		lst_add_head(list_a, temp);
+		*list_b = NULL;
+	}
+	else
+		lst_add_head(list_a, temp);
+}
+
+// pb (push b): Take the first element at the top of a and put it at the top of b.
+// Do nothing if a is empty.
+
 void push_b(t_dclist **list_a, t_dclist **list_b)
 {
 	t_dclist *temp;
+	int size;
 
 	if(!(*list_a))
 		return ;
+	size = dc_lstsize((*list_a));
 	temp = *list_a;
 	*list_a = (*list_a)->next;
 	(*list_a)->prev = temp->prev;
@@ -55,15 +91,18 @@ void push_b(t_dclist **list_a, t_dclist **list_b)
 	temp->next = temp;
 	temp->prev = temp;
 	if(!dc_lstsize((*list_b)))
+	{
+		free((*list_b));
 		*list_b = temp;
-		// lst_prev_next(list_b, temp);
+	}
+	else if(size == 1)
+	{
+		lst_add_head(list_b, temp);
+		*list_a = NULL;
+	}
+	else
+		lst_add_head(list_b, temp);
 }
-
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty.
-
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-// Do nothing if a is empty.
 
 // ra (rotate a): Shift up all elements of stack a by 1.
 // The first element becomes the last one.
