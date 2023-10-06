@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:51:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/05 14:04:01 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:51:31 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ void swap_both(t_dclist **list_a, t_dclist **list_b)
 	swap_single(list_b);
 }
 
+void push_b(t_dclist **list_a, t_dclist **list_b)
+{
+	t_dclist *temp;
+
+	if(!(*list_a))
+		return ;
+	temp = *list_a;
+	*list_a = (*list_a)->next;
+	(*list_a)->prev = temp->prev;
+	temp->prev->next = *list_a;
+	temp->next = temp;
+	temp->prev = temp;
+	if(!dc_lstsize((*list_b)))
+		*list_b = temp;
+		// lst_prev_next(list_b, temp);
+}
+
 // pa (push a): Take the first element at the top of b and put it at the top of a.
 // Do nothing if b is empty.
 
@@ -56,6 +73,20 @@ void swap_both(t_dclist **list_a, t_dclist **list_b)
 
 // rr : ra and rb at the same time.
 
+void shift_up_single(t_dclist **list)
+{
+	t_dclist *temp;
+
+	temp = (*list)->next;
+	*list = temp;
+}
+
+void shift_up_both(t_dclist **list_a, t_dclist **list_b)
+{
+	shift_up_single(list_a);
+	shift_up_single(list_b);
+}
+
 // rra (reverse rotate a): Shift down all elements of stack a by 1.
 // The last element becomes the first one.
 
@@ -63,3 +94,17 @@ void swap_both(t_dclist **list_a, t_dclist **list_b)
 // The last element becomes the first one.
 
 // rrr : rra and rrb at the same time.
+
+void shift_down_single(t_dclist **list)
+{
+	t_dclist *temp;
+	
+	temp = (*list)->prev;
+	*list = temp;
+}
+
+void shift_down_both(t_dclist **list_a, t_dclist **list_b)
+{
+	shift_down_single(list_a);
+	shift_down_single(list_b);
+}

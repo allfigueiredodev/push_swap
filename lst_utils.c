@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:33:49 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/04 20:34:07 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/05 22:01:58 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ void print_dlist(t_dclist *stack)
 	t_dclist *head;
 	head = stack;
 	stack = stack->next;
+	if(stack->next == head)
+	{
+		ft_printf("%d, \n", head->content);
+		return ;
+	}
 	ft_printf("%d, ", head->content);
 	while(stack->next != head)
 	{
 		ft_printf("%d, ", stack->content);
 		stack = stack->next;
 	}
-	ft_printf("%d, ", stack->content);
-	ft_printf("\n");
-	stack = head;
+	ft_printf("%d, \n", stack->content);
 }
 
 int	dc_lstsize(t_dclist *lst)
@@ -34,12 +37,14 @@ int	dc_lstsize(t_dclist *lst)
 	t_dclist *head;
 	
 	total = 0;
+	if(!lst)
+		return(total);
 	head = lst;
 	lst = lst->next;
 	if(lst == head)
 		return (1);
-	else if(!lst->next)
-		return (0);
+	else if(!lst || !lst->next)
+		return (total);
 	while (lst != head)
 	{
 		total++;
@@ -72,7 +77,7 @@ void	lst_prev_next(t_dclist **alst, t_dclist *new)
 	head = *(alst);
 	if (alst)
 	{
-		if (*alst == NULL)
+		if (!(*alst)->content)
 			*alst = new;
 		else if(head->next == head)
 		{

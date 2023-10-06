@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/04 23:21:54 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:04:17 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int main(int argc, char **argv)
 	}
 	print_dlist(data.stack_a);
 	// sa(&data.stack_a);
+	push_b(&data.stack_a, &data.stack_b);
+	print_dlist(data.stack_a);
+	print_dlist(data.stack_b);
 	free_data(&data);
 }

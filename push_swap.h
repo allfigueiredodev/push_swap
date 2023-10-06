@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/04 23:29:44 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:59:22 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void		lst_prev_next(t_dclist **alst, t_dclist *new);
 t_dclist	*lst_new_node(int content);
 void		dc_lstclear(t_dclist **lst);
 void		swap(t_dclist **list);
-void		push_a(t_dclist **list_a, t_dclist **list_b);
+void		shift_up_single(t_dclist **list);
+void		shift_up_both(t_dclist **list_a, t_dclist **list_b);
+void		shift_down_single(t_dclist **list);
+void		shift_down_both(t_dclist **list_a, t_dclist **list_b);
+void		push_b(t_dclist **list_a, t_dclist **list_b);
 
 #endif

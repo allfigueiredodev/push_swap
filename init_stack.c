@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:12 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/04 16:54:30 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:21:35 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 void init_stack(t_data *data)
 {
 	data->stack_a = (t_dclist *)ft_calloc(1, sizeof(t_dclist));
-	// data->stack_b = (t_dclist *)ft_calloc(1, sizeof(t_dclist));
+	data->stack_b = (t_dclist *)ft_calloc(1, sizeof(t_dclist));
 	data->total_nbrs = 0;
-	// if(!data->stack_a || !data->stack_b)
-	if(!data->stack_a)
+	if(!data->stack_a || !data->stack_b)
 	{
 		if(data->stack_a)
 			free(data->stack_a);
-		// if(data->stack_b)
-		// 	free(data->stack_b);
+		if(data->stack_b)
+			free(data->stack_b);
 		ft_putstr_fd("Error\n", 2);
 		exit(0);
 	}
