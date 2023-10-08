@@ -4,148 +4,948 @@
   "source": "https://excalidraw.com",
   "elements": [
     {
-      "id": "PfBgrPGKpT_8uuduzcagY",
       "type": "text",
-      "x": 273.09765625,
-      "y": 196.109375,
-      "width": 372.17974853515625,
-      "height": 150,
-      "angle": 0,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "transparent",
-      "fillStyle": "hachure",
-      "strokeWidth": 1,
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "opacity": 100,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "seed": 546026506,
       "version": 184,
       "versionNonce": 1451308886,
       "isDeleted": false,
-      "boundElements": null,
+      "id": "PfBgrPGKpT_8uuduzcagY",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 273.09765625,
+      "y": 196.109375,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "width": 372.17974853515625,
+      "height": 150,
+      "seed": 546026506,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
       "updated": 1695494328363,
       "link": null,
       "locked": false,
-      "text": "validations:\n- argc != 2 ;\n- dup number ;\n- is arguments an int list?\n- are all arguments less than an int?\n- ",
       "fontSize": 20,
       "fontFamily": 1,
+      "text": "validations:\n- argc != 2 ;\n- dup number ;\n- is arguments an int list?\n- are all arguments less than an int?\n- ",
       "textAlign": "left",
       "verticalAlign": "top",
-      "baseline": 143,
       "containerId": null,
       "originalText": "validations:\n- argc != 2 ;\n- dup number ;\n- is arguments an int list?\n- are all arguments less than an int?\n- ",
-      "lineHeight": 1.25
+      "lineHeight": 1.25,
+      "baseline": 143
     },
     {
-      "id": "d9WjAv0eBJtH-VzMkz5lY",
       "type": "text",
-      "x": 746.48828125,
-      "y": 209.24609375,
-      "width": 765.4993896484375,
-      "height": 100,
-      "angle": 0,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "transparent",
-      "fillStyle": "hachure",
-      "strokeWidth": 1,
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "opacity": 100,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "seed": 2142157578,
       "version": 200,
       "versionNonce": 1090917194,
       "isDeleted": false,
-      "boundElements": null,
+      "id": "d9WjAv0eBJtH-VzMkz5lY",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 746.48828125,
+      "y": 209.24609375,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "width": 765.4993896484375,
+      "height": 100,
+      "seed": 2142157578,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
       "updated": 1695526786580,
       "link": null,
       "locked": false,
-      "text": "Parsing:\n- check if it's already sorted ;\n- stack A must follow the argument order, the first at the top, and so on ;\n- split and atoi when the input is like \"q w e r t y\" ;",
       "fontSize": 20,
       "fontFamily": 1,
+      "text": "Parsing:\n- check if it's already sorted ;\n- stack A must follow the argument order, the first at the top, and so on ;\n- split and atoi when the input is like \"q w e r t y\" ;",
       "textAlign": "left",
       "verticalAlign": "top",
-      "baseline": 93,
       "containerId": null,
       "originalText": "Parsing:\n- check if it's already sorted ;\n- stack A must follow the argument order, the first at the top, and so on ;\n- split and atoi when the input is like \"q w e r t y\" ;",
-      "lineHeight": 1.25
+      "lineHeight": 1.25,
+      "baseline": 93
     },
     {
-      "id": "iEjvdpwI5p_uY5UIy4hwP",
       "type": "text",
-      "x": 762.26953125,
-      "y": 555.87109375,
-      "width": 448.9595947265625,
-      "height": 75,
-      "angle": 0,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "transparent",
-      "fillStyle": "hachure",
-      "strokeWidth": 1,
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "opacity": 100,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "seed": 404198678,
       "version": 101,
       "versionNonce": 1594823190,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1695495523244,
-      "link": null,
-      "locked": false,
-      "text": "Output:\n- the smallest number should be at the top ;\n- the stack B should be empty",
-      "fontSize": 20,
-      "fontFamily": 1,
-      "textAlign": "left",
-      "verticalAlign": "top",
-      "baseline": 68,
-      "containerId": null,
-      "originalText": "Output:\n- the smallest number should be at the top ;\n- the stack B should be empty",
-      "lineHeight": 1.25
-    },
-    {
-      "id": "DVk6lllHsbeMOWyKycTS5",
-      "type": "text",
-      "x": 230.55078125,
-      "y": 679.53515625,
-      "width": 847.8193359375,
-      "height": 150,
-      "angle": 0,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "transparent",
+      "id": "iEjvdpwI5p_uY5UIy4hwP",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",
       "roughness": 1,
       "opacity": 100,
+      "angle": 0,
+      "x": 762.26953125,
+      "y": 555.87109375,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "width": 448.9595947265625,
+      "height": 75,
+      "seed": 404198678,
       "groupIds": [],
       "frameId": null,
       "roundness": null,
-      "seed": 846427978,
+      "boundElements": [],
+      "updated": 1695495523244,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Output:\n- the smallest number should be at the top ;\n- the stack B should be empty",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Output:\n- the smallest number should be at the top ;\n- the stack B should be empty",
+      "lineHeight": 1.25,
+      "baseline": 68
+    },
+    {
+      "type": "text",
       "version": 175,
       "versionNonce": 1909024330,
       "isDeleted": false,
-      "boundElements": null,
+      "id": "DVk6lllHsbeMOWyKycTS5",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 230.55078125,
+      "y": 679.53515625,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "width": 847.8193359375,
+      "height": 150,
+      "seed": 846427978,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
       "updated": 1695494258056,
       "link": null,
       "locked": false,
-      "text": "Behavior:\n- If no parameters are specified, the program must not display anything and give the\nprompt back ;\n- In case of error, it must display \"Error\" followed by a ’\\n’ on the standard error.\nErrors include for example: some arguments aren’t integers, some arguments are\nbigger than an integer and/or there are duplicates.",
       "fontSize": 20,
       "fontFamily": 1,
+      "text": "Behavior:\n- If no parameters are specified, the program must not display anything and give the\nprompt back ;\n- In case of error, it must display \"Error\" followed by a ’\\n’ on the standard error.\nErrors include for example: some arguments aren’t integers, some arguments are\nbigger than an integer and/or there are duplicates.",
       "textAlign": "left",
       "verticalAlign": "top",
-      "baseline": 143,
       "containerId": null,
       "originalText": "Behavior:\n- If no parameters are specified, the program must not display anything and give the\nprompt back ;\n- In case of error, it must display \"Error\" followed by a ’\\n’ on the standard error.\nErrors include for example: some arguments aren’t integers, some arguments are\nbigger than an integer and/or there are duplicates.",
-      "lineHeight": 1.25
+      "lineHeight": 1.25,
+      "baseline": 143
+    },
+    {
+      "type": "freedraw",
+      "version": 22,
+      "versionNonce": 592946826,
+      "isDeleted": false,
+      "id": "E1J4jfgro2QMoJx8x3t2y",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 427.40625,
+      "y": 228.8984375,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "width": 52.7890625,
+      "height": 9.6171875,
+      "seed": 1978306774,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696778586315,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -1.95703125,
+          4.24609375
+        ],
+        [
+          -1.95703125,
+          4.59375
+        ],
+        [
+          -1.95703125,
+          6.77734375
+        ],
+        [
+          -2.30859375,
+          7.125
+        ],
+        [
+          -2.30859375,
+          7.8203125
+        ],
+        [
+          -2.30859375,
+          8.515625
+        ],
+        [
+          -0.59375,
+          8.515625
+        ],
+        [
+          0.1015625,
+          8.515625
+        ],
+        [
+          0.796875,
+          8.515625
+        ],
+        [
+          2.6328125,
+          8.515625
+        ],
+        [
+          7.0859375,
+          8.515625
+        ],
+        [
+          34.86328125,
+          6.46484375
+        ],
+        [
+          44.7734375,
+          3.04296875
+        ],
+        [
+          49.67578125,
+          0.5234375
+        ],
+        [
+          50.48046875,
+          -0.75
+        ],
+        [
+          50.48046875,
+          -1.1015625
+        ],
+        [
+          49.20703125,
+          -1.1015625
+        ],
+        [
+          48.85546875,
+          -1.1015625
+        ],
+        [
+          48.50390625,
+          -1.1015625
+        ],
+        [
+          48.50390625,
+          -1.1015625
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 29,
+      "versionNonce": 778375754,
+      "isDeleted": false,
+      "id": "n_-hZ9bleXhOn8OCIq3EP",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 442.5546875,
+      "y": 252.390625,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "width": 42.59765625,
+      "height": 15.4765625,
+      "seed": 166923350,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696778587566,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1.71484375
+        ],
+        [
+          -0.4609375,
+          3.55078125
+        ],
+        [
+          -0.4609375,
+          4.24609375
+        ],
+        [
+          -0.4609375,
+          6.4296875
+        ],
+        [
+          -0.921875,
+          7.6953125
+        ],
+        [
+          -1.625,
+          8.73828125
+        ],
+        [
+          -1.625,
+          9.0859375
+        ],
+        [
+          -1.625,
+          9.43359375
+        ],
+        [
+          -0.70703125,
+          9.78125
+        ],
+        [
+          -0.359375,
+          9.78125
+        ],
+        [
+          -0.01171875,
+          9.78125
+        ],
+        [
+          0.3359375,
+          10.12890625
+        ],
+        [
+          1.37890625,
+          10.12890625
+        ],
+        [
+          6.75,
+          8.7578125
+        ],
+        [
+          8.46484375,
+          8.7578125
+        ],
+        [
+          20.41796875,
+          4.76171875
+        ],
+        [
+          26.1171875,
+          3.38671875
+        ],
+        [
+          28.1796875,
+          2.4609375
+        ],
+        [
+          28.52734375,
+          2.109375
+        ],
+        [
+          28.875,
+          1.7578125
+        ],
+        [
+          35.15234375,
+          -3.625
+        ],
+        [
+          40.0546875,
+          -4.88671875
+        ],
+        [
+          40.97265625,
+          -5.34765625
+        ],
+        [
+          40.05078125,
+          -5.34765625
+        ],
+        [
+          39.69921875,
+          -5.34765625
+        ],
+        [
+          39.34765625,
+          -5.34765625
+        ],
+        [
+          39.34765625,
+          -5.34765625
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 23,
+      "versionNonce": 1056904586,
+      "isDeleted": false,
+      "id": "nQ30eGJJC9E642vrDX6-q",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 546.80859375,
+      "y": 274.08203125,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "width": 41.6875,
+      "height": 10.546875,
+      "seed": 1185100950,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696778589243,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -1.14453125,
+          1.71484375
+        ],
+        [
+          -1.60546875,
+          2.6328125
+        ],
+        [
+          -2.41796875,
+          3.8984375
+        ],
+        [
+          -3.453125,
+          7.44921875
+        ],
+        [
+          -3.453125,
+          7.796875
+        ],
+        [
+          -3.453125,
+          8.4921875
+        ],
+        [
+          -2.53515625,
+          8.4921875
+        ],
+        [
+          -1.4921875,
+          8.83984375
+        ],
+        [
+          -1.14453125,
+          8.83984375
+        ],
+        [
+          -0.796875,
+          9.1875
+        ],
+        [
+          -0.44921875,
+          9.1875
+        ],
+        [
+          1.734375,
+          9.1875
+        ],
+        [
+          2.4296875,
+          9.1875
+        ],
+        [
+          3.34765625,
+          8.265625
+        ],
+        [
+          7.80078125,
+          7.578125
+        ],
+        [
+          21.24609375,
+          4.6015625
+        ],
+        [
+          33.43359375,
+          2.19921875
+        ],
+        [
+          37.88671875,
+          -1.0078125
+        ],
+        [
+          38.234375,
+          -1.0078125
+        ],
+        [
+          38.234375,
+          -1.359375
+        ],
+        [
+          38.234375,
+          -1.359375
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 39,
+      "versionNonce": 746253514,
+      "isDeleted": false,
+      "id": "xE5iJQUcadX9DdIPeOpMI",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 665.07421875,
+      "y": 299.64453125,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "width": 30.046875,
+      "height": 17.65234375,
+      "seed": 452324694,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696778591467,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2.73828125
+        ],
+        [
+          -0.921875,
+          4.11328125
+        ],
+        [
+          -0.921875,
+          4.4609375
+        ],
+        [
+          -1.84375,
+          6.296875
+        ],
+        [
+          -2.1953125,
+          6.9921875
+        ],
+        [
+          -2.546875,
+          7.6875
+        ],
+        [
+          -3.0078125,
+          8.953125
+        ],
+        [
+          -3.46875,
+          10.7890625
+        ],
+        [
+          -4.171875,
+          12.40234375
+        ],
+        [
+          -4.171875,
+          12.75
+        ],
+        [
+          -4.171875,
+          13.09765625
+        ],
+        [
+          -2.45703125,
+          13.09765625
+        ],
+        [
+          -2.109375,
+          13.09765625
+        ],
+        [
+          -1.19140625,
+          13.09765625
+        ],
+        [
+          1.7890625,
+          13.09765625
+        ],
+        [
+          2.59375,
+          12.17578125
+        ],
+        [
+          3.51171875,
+          11.82421875
+        ],
+        [
+          4.4296875,
+          11.36328125
+        ],
+        [
+          7.0625,
+          9.7578125
+        ],
+        [
+          10.48828125,
+          5.859375
+        ],
+        [
+          10.9453125,
+          4.9375
+        ],
+        [
+          11.75,
+          3.3125
+        ],
+        [
+          12.09765625,
+          2.9609375
+        ],
+        [
+          12.4453125,
+          2.609375
+        ],
+        [
+          12.4453125,
+          2.2578125
+        ],
+        [
+          13.140625,
+          2.2578125
+        ],
+        [
+          14.9765625,
+          1.3359375
+        ],
+        [
+          16.8125,
+          -0.046875
+        ],
+        [
+          17.73046875,
+          -0.3984375
+        ],
+        [
+          18.6484375,
+          -0.859375
+        ],
+        [
+          20.36328125,
+          -1.43359375
+        ],
+        [
+          22.99609375,
+          -2.9296875
+        ],
+        [
+          24.83203125,
+          -3.8515625
+        ],
+        [
+          24.83203125,
+          -4.203125
+        ],
+        [
+          25.1796875,
+          -4.203125
+        ],
+        [
+          25.875,
+          -4.5546875
+        ],
+        [
+          25.875,
+          -4.5546875
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 16,
+      "versionNonce": 2141395146,
+      "isDeleted": false,
+      "id": "9O4ffluau3DE1x32BT6W4",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1530.0390625,
+      "y": 269.1328125,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "width": 34.70703125,
+      "height": 12.22265625,
+      "seed": 596677142,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696778605035,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2.73828125
+        ],
+        [
+          0,
+          3.0859375
+        ],
+        [
+          0,
+          6.515625
+        ],
+        [
+          0,
+          11.41796875
+        ],
+        [
+          0.34765625,
+          11.765625
+        ],
+        [
+          1.265625,
+          12.22265625
+        ],
+        [
+          3.1015625,
+          12.22265625
+        ],
+        [
+          3.44921875,
+          12.22265625
+        ],
+        [
+          6.984375,
+          9.828125
+        ],
+        [
+          13.70703125,
+          7.54296875
+        ],
+        [
+          25.90625,
+          2.515625
+        ],
+        [
+          32.07421875,
+          0.6796875
+        ],
+        [
+          34.70703125,
+          0.10546875
+        ],
+        [
+          34.70703125,
+          0.10546875
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 20,
+      "versionNonce": 1552781258,
+      "isDeleted": false,
+      "id": "cmX2Z34EHCAAcVDUiMKTn",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1297.90234375,
+      "y": 296.09765625,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "transparent",
+      "width": 41.0625,
+      "height": 10.99609375,
+      "seed": 2048828950,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696778608922,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2.73828125
+        ],
+        [
+          0,
+          4.921875
+        ],
+        [
+          0,
+          8.0078125
+        ],
+        [
+          0,
+          9.84375
+        ],
+        [
+          0.91796875,
+          10.6484375
+        ],
+        [
+          0.91796875,
+          10.99609375
+        ],
+        [
+          1.265625,
+          10.99609375
+        ],
+        [
+          1.61328125,
+          10.99609375
+        ],
+        [
+          2.30859375,
+          10.99609375
+        ],
+        [
+          3.00390625,
+          10.99609375
+        ],
+        [
+          3.69921875,
+          10.99609375
+        ],
+        [
+          9.734375,
+          8.140625
+        ],
+        [
+          15.19921875,
+          7.2265625
+        ],
+        [
+          24.6484375,
+          3.91796875
+        ],
+        [
+          34.09765625,
+          1.40625
+        ],
+        [
+          41.0625,
+          0.14453125
+        ],
+        [
+          40.140625,
+          0.14453125
+        ],
+        [
+          40.140625,
+          0.14453125
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "text",
+      "version": 1462,
+      "versionNonce": 45396538,
+      "isDeleted": false,
+      "id": "r5INmR-noRkUeu4oq-nI3",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1298.39453125,
+      "y": 364.27734375,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "width": 840.5593872070312,
+      "height": 525,
+      "seed": 1494197578,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1696781666282,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Algorithm (while Stack_A > 3):\n- Push the top two numbers from Stack_A to Stack_B;\n- Set the min and max values;\n- Create a function to set and reset the index;\n- Create a function to identify the middle of the stack;\n- Verify if the head of Stack_A is less than min or greater than max ;\n- If it's true, consider the price of moving the old greatest number of \nthe Stack_B to the head position;\n- If it's false, make the calculation based on the number that is its target;\n\ndc_lstsize(Stack_A) == 3:\n- Create a function to set the target for each of the last 3 numbers in Stack_B;\n- Check if Stack_A is already sorted;\n- If it's true, verify if the head number is the correct one to be below the number\nthat will come from Stack_B;\n- If it's false, rotate or swap, to make it ready to be sorted as the numbers \nof Stack_B are being pushed;\n- At each number being pushed verify if the target at the Stack_B is the Head;\n- If it's true, rotate Stack_A until the number gets to the head to continue\npushing from Stack_B;\n- If it's false, just continue pushing.",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Algorithm (while Stack_A > 3):\n- Push the top two numbers from Stack_A to Stack_B;\n- Set the min and max values;\n- Create a function to set and reset the index;\n- Create a function to identify the middle of the stack;\n- Verify if the head of Stack_A is less than min or greater than max ;\n- If it's true, consider the price of moving the old greatest number of \nthe Stack_B to the head position;\n- If it's false, make the calculation based on the number that is its target;\n\ndc_lstsize(Stack_A) == 3:\n- Create a function to set the target for each of the last 3 numbers in Stack_B;\n- Check if Stack_A is already sorted;\n- If it's true, verify if the head number is the correct one to be below the number\nthat will come from Stack_B;\n- If it's false, rotate or swap, to make it ready to be sorted as the numbers \nof Stack_B are being pushed;\n- At each number being pushed verify if the target at the Stack_B is the Head;\n- If it's true, rotate Stack_A until the number gets to the head to continue\npushing from Stack_B;\n- If it's false, just continue pushing.",
+      "lineHeight": 1.25,
+      "baseline": 518
     }
   ],
   "appState": {
