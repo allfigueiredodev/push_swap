@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/08 19:24:14 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:49:20 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ void		swap_both(t_dclist **list_a, t_dclist **list_b);
 int			check_for_middle(t_dclist *list);
 void		set_min_max(t_data *data);
 void		set_targets(t_dclist **stack_a, t_dclist **stack_b);
+int			check_crescent_order(t_dclist *list);
+int			check_decrescent_order(t_dclist *list);
 
 #endif
