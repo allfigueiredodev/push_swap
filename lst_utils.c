@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:33:49 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/06 19:07:14 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/08 21:43:39 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,28 @@ void print_dlist(t_dclist *stack)
 		stack = stack->next;
 	}
 	ft_printf("%d, \n", stack->content);
+}
+
+void print_dlist_index(t_dclist *stack)
+{
+	t_dclist *head;
+
+	if(!stack)
+		return ;
+	head = stack;
+	stack = stack->next;
+	if(stack == head)
+	{
+		ft_printf("%d, \n", head->index);
+		return ;
+	}
+	ft_printf("%d, ", head->index);
+	while(stack->next != head)
+	{
+		ft_printf("%d, ", stack->index);
+		stack = stack->next;
+	}
+	ft_printf("%d, \n", stack->index);
 }
 
 int	dc_lstsize(t_dclist *lst)
@@ -129,6 +151,7 @@ t_dclist	*lst_new_node(int content)
 	node->prev = node;
 	node->next = node;
 	node->index = 0;
+	node->target = NULL;
 	return (&*node);
 }
 

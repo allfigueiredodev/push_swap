@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:29:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/06 14:39:27 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:31:31 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	dc_lstclear(t_dclist **lst)
 	t_dclist	*ptr;
 	t_dclist	*temp;
 
-	if (!*lst)
+	if (!(*lst)->next && *lst)
+	{
+		free(*lst);
 		return ;
+	}
 	ptr = (*lst);
 	*lst = (*lst)->next;
 	while ((*lst) != ptr)

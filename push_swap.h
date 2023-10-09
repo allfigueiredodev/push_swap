@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/06 19:24:29 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:24:14 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ typedef struct s_data
 	int total_nbrs;
 	struct s_dclist *stack_a;
 	struct s_dclist *stack_b;
+	int stack_b_min;
+	int stack_b_max;
 }	t_data;
 
 typedef struct s_dclist
 {
 	int index;
 	int content;
+	struct s_dclist *target;
 	struct s_dclist *next;
-	struct s_dclist *prev;
-	
+	struct s_dclist *prev;	
 }	t_dclist;
 
 int 		init_data_from_string(char *nbr_list, t_data *data);
@@ -60,5 +62,11 @@ void		shift_down_both(t_dclist **list_a, t_dclist **list_b);
 void		push_b(t_dclist **list_a, t_dclist **list_b);
 void		push_a(t_dclist **list_b, t_dclist **list_a);
 void		lst_add_head(t_dclist **alst, t_dclist *new);
+void		fix_index(t_dclist **list);
+void		print_dlist_index(t_dclist *stack);
+void		swap_both(t_dclist **list_a, t_dclist **list_b);
+int			check_for_middle(t_dclist *list);
+void		set_min_max(t_data *data);
+void		set_targets(t_dclist **stack_a, t_dclist **stack_b);
 
 #endif
