@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/08 22:49:20 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/10 00:02:15 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_data
 	int total_nbrs;
 	struct s_dclist *stack_a;
 	struct s_dclist *stack_b;
-	int stack_b_min;
-	int stack_b_max;
+	struct s_dclist *stack_b_min;
+	struct s_dclist *stack_b_max;
 }	t_data;
 
 typedef struct s_dclist
@@ -55,20 +55,25 @@ void		lst_prev_next(t_dclist **alst, t_dclist *new);
 t_dclist	*lst_new_node(int content);
 void		dc_lstclear(t_dclist **lst);
 void		swap(t_dclist **list);
-void		shift_up_single(t_dclist **list);
+void		shift_up_single(t_dclist **list, int flag);
 void		shift_up_both(t_dclist **list_a, t_dclist **list_b);
-void		shift_down_single(t_dclist **list);
+void		shift_down_single(t_dclist **list, int flag);
 void		shift_down_both(t_dclist **list_a, t_dclist **list_b);
 void		push_b(t_dclist **list_a, t_dclist **list_b);
 void		push_a(t_dclist **list_b, t_dclist **list_a);
 void		lst_add_head(t_dclist **alst, t_dclist *new);
 void		fix_index(t_dclist **list);
 void		print_dlist_index(t_dclist *stack);
+void		swap_single(t_dclist **list, int flag);
 void		swap_both(t_dclist **list_a, t_dclist **list_b);
 int			check_for_middle(t_dclist *list);
 void		set_min_max(t_data *data);
 void		set_targets(t_dclist **stack_a, t_dclist **stack_b);
 int			check_crescent_order(t_dclist *list);
 int			check_decrescent_order(t_dclist *list);
+void		sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
+int			total_downward_moves(t_data data);
+int			total_upward_moves(t_data data);
+int			check_cheapest(t_data data,  t_dclist **stack_a, t_dclist **stack_b);
 
 #endif

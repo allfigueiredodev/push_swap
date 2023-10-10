@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:51:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/06 19:28:34 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:40:11 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // sb (swap b): Swap the first 2 elements at the top of stack b.
 // Do nothing if there is only one or no elements.
 
-void swap_single(t_dclist **list)
+void swap_single(t_dclist **list, int flag)
 {
     t_dclist *temp;
 
@@ -32,14 +32,24 @@ void swap_single(t_dclist **list)
     (*list)->prev->next = temp;
     (*list)->prev = temp;
     *list = temp;
+	fix_index(list);
+	if(flag == 0)
+		return ;
+	else if(flag == 1)
+		ft_printf("sa\n");
+	else if(flag == 2)
+		ft_printf("sb\n");
 }
 
 // ss : sa and sb at the same time.
 
 void swap_both(t_dclist **list_a, t_dclist **list_b)
 {
-	swap_single(list_a);
-	swap_single(list_b);
+	swap_single(list_a, 0);
+	swap_single(list_b, 0);
+	fix_index(list_a);
+	fix_index(list_b);
+	ft_printf("ss\n");
 }
 
 // pa (push a): Take the first element at the top of b and put it at the top of a.
@@ -71,6 +81,9 @@ void push_a(t_dclist **list_b, t_dclist **list_a)
 	}
 	else
 		lst_add_head(list_a, temp);
+	fix_index(list_a);
+	fix_index(list_b);
+	ft_printf("pa\n");
 }
 
 // pb (push b): Take the first element at the top of a and put it at the top of b.
@@ -102,6 +115,9 @@ void push_b(t_dclist **list_a, t_dclist **list_b)
 	}
 	else
 		lst_add_head(list_b, temp);
+	fix_index(list_a);
+	fix_index(list_b);
+	ft_printf("pb\n");
 }
 
 // ra (rotate a): Shift up all elements of stack a by 1.
@@ -112,18 +128,28 @@ void push_b(t_dclist **list_a, t_dclist **list_b)
 
 // rr : ra and rb at the same time.
 
-void shift_up_single(t_dclist **list)
+void shift_up_single(t_dclist **list, int flag)
 {
 	t_dclist *temp;
 
 	temp = (*list)->next;
 	*list = temp;
+	fix_index(list);
+	if(flag == 0)
+		return ;
+	else if(flag == 1)
+		ft_printf("ra\n");
+	else if(flag == 2)
+		ft_printf("rb\n");
 }
 
 void shift_up_both(t_dclist **list_a, t_dclist **list_b)
 {
-	shift_up_single(list_a);
-	shift_up_single(list_b);
+	shift_up_single(list_a, 0);
+	shift_up_single(list_b, 0);
+	fix_index(list_a);
+	fix_index(list_b);
+	ft_printf("rr\n");
 }
 
 // rra (reverse rotate a): Shift down all elements of stack a by 1.
@@ -134,16 +160,26 @@ void shift_up_both(t_dclist **list_a, t_dclist **list_b)
 
 // rrr : rra and rrb at the same time.
 
-void shift_down_single(t_dclist **list)
+void shift_down_single(t_dclist **list, int flag)
 {
 	t_dclist *temp;
 	
 	temp = (*list)->prev;
 	*list = temp;
+	fix_index(list);
+	if(flag == 0)
+		return ;
+	else if(flag == 1)
+		ft_printf("rra\n");
+	else if(flag == 2)
+		ft_printf("rrb\n");
 }
 
 void shift_down_both(t_dclist **list_a, t_dclist **list_b)
 {
-	shift_down_single(list_a);
-	shift_down_single(list_b);
+	shift_down_single(list_a, 0);
+	shift_down_single(list_b, 0);
+	fix_index(list_a);
+	fix_index(list_b);
+	ft_printf("rrr\n");
 }

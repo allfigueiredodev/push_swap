@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/08 19:30:00 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:56:57 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,24 @@ int main(int argc, char **argv)
 		free_data(&data);
 		return(0);
 	}
-	push_b(&data.stack_a, &data.stack_b);
-	push_b(&data.stack_a, &data.stack_b);
-	push_b(&data.stack_a, &data.stack_b);
-	push_b(&data.stack_a, &data.stack_b);
-	push_b(&data.stack_a, &data.stack_b);
-	push_b(&data.stack_a, &data.stack_b);
-	push_b(&data.stack_a, &data.stack_b);
-	print_dlist(data.stack_a);
-	print_dlist(data.stack_b);
-	set_targets(&data.stack_a, &data.stack_b);
-	ft_printf("%d\n", data.stack_a->target->content);
-	ft_printf("%d\n", data.stack_a->next->target->content);
-	ft_printf("%d\n", data.stack_a->next->next->target->content);	
+	if(!check_crescent_order(data.stack_a))
+		sort(&data, &data.stack_a, &data.stack_b);
+	ft_printf("min: %d max: %d\n", data.stack_b_min->content, data.stack_b_max->content);
 	free_data(&data);
+	
+	// push_b(&data.stack_a, &data.stack_b);
+	// push_b(&data.stack_a, &data.stack_b);
+	// push_b(&data.stack_a, &data.stack_b);
+	// push_b(&data.stack_a, &data.stack_b);
+	// push_b(&data.stack_a, &data.stack_b);
+	// push_b(&data.stack_a, &data.stack_b);
+	// push_b(&data.stack_a, &data.stack_b);
+	// print_dlist(data.stack_a);
+	// print_dlist(data.stack_b);
+	// set_targets(&data.stack_a, &data.stack_b);
+	// ft_printf("%d\n", data.stack_a->target->content);
+	// ft_printf("%d\n", data.stack_a->next->target->content);
+	// ft_printf("%d\n", data.stack_a->next->next->target->content);	
 	// push_b(&data.stack_a, &data.stack_b);
 	// push_b(&data.stack_a, &data.stack_b);
 	// push_b(&data.stack_a, &data.stack_b);
