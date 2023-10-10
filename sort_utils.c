@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/10 00:58:38 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:39:42 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 	{
 		while(*stack_b != b_head->prev)
 		{
-			if(!(*stack_a)->target)
+			if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
 				(*stack_a)->target = (*stack_b);
-			if((*stack_b)->content > (*stack_a)->content
+			else if((*stack_b)->content > (*stack_a)->content
 			&& (*stack_b)->content < (*stack_a)->target->content)
 				(*stack_a)->target = (*stack_b);
 			*stack_b = (*stack_b)->next;
 		}
-		if(!(*stack_a)->target)
+		if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
 			(*stack_a)->target = (*stack_b);
-		if((*stack_b)->content > (*stack_a)->content
+		else if((*stack_b)->content > (*stack_a)->content
 		&& (*stack_b)->content < (*stack_a)->target->content)
 			(*stack_a)->target = (*stack_b);
 		*stack_b = b_head;
@@ -92,16 +92,16 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 	*stack_b = b_head;
 	while(*stack_b != b_head->prev)
 	{
-		if(!(*stack_a)->target)
+		if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
 			(*stack_a)->target = (*stack_b);
-		if((*stack_b)->content > (*stack_a)->content
+		else if((*stack_b)->content > (*stack_a)->content
 		&& (*stack_b)->content < (*stack_a)->target->content)
 			(*stack_a)->target = (*stack_b);
 		*stack_b = (*stack_b)->next;
 	}
-	if(!(*stack_a)->target)
+	if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
 		(*stack_a)->target = (*stack_b);
-	if((*stack_b)->content > (*stack_a)->content
+	else if((*stack_b)->content > (*stack_a)->content
 	&& (*stack_b)->content < (*stack_a)->target->content)
 		(*stack_a)->target = (*stack_b);
 	*stack_b = b_head;

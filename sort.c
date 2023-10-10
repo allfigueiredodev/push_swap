@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:32:23 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/10 00:23:45 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:43:14 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,16 @@ int check_cheapest(t_data data,  t_dclist **stack_a, t_dclist **stack_b)
 	
 	head = *stack_a;
 	set_targets(stack_a, stack_b);
-	ft_printf("content: %d, target: %d \n", (*stack_a)->content, (*stack_a)->target->content);
 	*stack_a = (*stack_a)->next;
 	while(*stack_a != head)
 	{
-		// if((*stack_a)->content > data.stack_b_max->content || (*stack_a)->content < data.stack_b_min->content)
-		// {
-		// 	if(total_downward_moves(data) <= total_upward_moves(data))
-		// 		total_moves = total_downward_moves(data) + 1;
-		// 	else
-		// 		total_moves = total_upward_moves(data) + 1;			
-		// }
-		ft_printf("content: %d, target: %d \n", (*stack_a)->content, (*stack_a)->target->content);
+		if((*stack_a)->content > data.stack_b_max->content || (*stack_a)->content < data.stack_b_min->content)
+		{
+			if(total_downward_moves(data) <= total_upward_moves(data))
+				total_moves = total_downward_moves(data) + 1;
+			else
+				total_moves = total_upward_moves(data) + 1;			
+		}
 		*stack_a = (*stack_a)->next;
 		// else
 		// {
@@ -59,15 +57,20 @@ int check_cheapest(t_data data,  t_dclist **stack_a, t_dclist **stack_b)
 
 void sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	(void)data;
+	t_dclist *head;
+	
 	push_b(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	print_dlist(*stack_a);
-	print_dlist(*stack_b);
-	// set_min_max(data);
+	set_min_max(data);
 	check_cheapest(*data, stack_a, stack_b);
+	head = data->stack_a;
+	ft_printf("content: %d, target: %d \n", data->stack_a->content, data->stack_a->target->content);
+	data->stack_a = data->stack_a->next;
+	while(head != data->stack_a)
+	{
+		ft_printf("content: %d, target: %d \n", data->stack_a->content, data->stack_a->target->content);
+		data->stack_a = data->stack_a->next;
+	}
 }
 
 // int main(void)
