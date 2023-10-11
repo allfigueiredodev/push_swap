@@ -6,11 +6,40 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/10 15:39:42 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:58:07 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_dclist *check_cheapest(t_dclist **stack_a)
+{
+	t_dclist *head;
+	t_dclist *cheapest;
+
+	head = (*stack_a)->prev;
+	cheapest = NULL;
+	while(*stack_a != head)
+	{
+		if((*stack_a)->cost == 1)
+		{
+			cheapest = *stack_a;
+			return (cheapest);
+		}
+		else if(!(cheapest))
+			cheapest = *stack_a;
+		else if((*stack_a)->cost < cheapest->cost)
+			cheapest = *stack_a;
+		*stack_a = (*stack_a)->next;
+	}
+	return(cheapest);
+}
+
+void fix_indexes(t_dclist **stack_a, t_dclist **stack_b)
+{
+	fix_index(stack_a);
+	fix_index(stack_b);
+}
 
 void fix_index(t_dclist **list)
 {
@@ -112,8 +141,8 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 // {
 // 	t_data data;
 // 	t_dclist *head;
+// 	t_dclist *result;
 
-// 	data.stack_b = NULL;
 // 	data.stack_a = lst_new_node(1);
 // 	lst_prev_next(&data.stack_a, lst_new_node(4));
 // 	lst_prev_next(&data.stack_a, lst_new_node(99));
@@ -123,6 +152,18 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 // 	lst_prev_next(&data.stack_a, lst_new_node(0));
 // 	lst_prev_next(&data.stack_a, lst_new_node(8));
 // 	lst_prev_next(&data.stack_a, lst_new_node(-3));
+// 	head = data.stack_a;
+// 	data.stack_a->cost = 30;
+// 	data.stack_a = data.stack_a->next;
+// 	while(data.stack_a != head)
+// 	{
+// 		data.stack_a->cost = data.stack_a->prev->cost + 1;
+// 		data.stack_a = data.stack_a->next;
+// 	}
+// 		data.stack_a->cost = 15;
+// 	result = check_cheapest(&head);
+// 	ft_printf("cost: %d\n", result->cost);
+	
 // 	push_b(&data.stack_a, &data.stack_b);
 // 	push_b(&data.stack_a, &data.stack_b);
 // 	push_b(&data.stack_a, &data.stack_b);

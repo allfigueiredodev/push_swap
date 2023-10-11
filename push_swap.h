@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/10 00:02:15 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:14:58 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_dclist
 {
 	int index;
 	int content;
+	int cost;
+	int stack_a_direction;
+	int target_direction;
 	struct s_dclist *target;
 	struct s_dclist *next;
 	struct s_dclist *prev;	
@@ -71,9 +74,12 @@ void		set_min_max(t_data *data);
 void		set_targets(t_dclist **stack_a, t_dclist **stack_b);
 int			check_crescent_order(t_dclist *list);
 int			check_decrescent_order(t_dclist *list);
-void		sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
-int			total_downward_moves(t_data data);
-int			total_upward_moves(t_data data);
-int			check_cheapest(t_data data,  t_dclist **stack_a, t_dclist **stack_b);
+int			sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
+int			b_downward_moves(t_data data);
+int			b_upward_moves(t_data data);
+int			set_cost(t_data data,  t_dclist **stack_a, t_dclist **stack_b);
+void		fix_indexes(t_dclist **stack_a, t_dclist **stack_b);
+void		sort_three(t_dclist **stack_a);
+int			check_early_sort(t_dclist *stack_a, t_dclist *stack_b);
 
 #endif
