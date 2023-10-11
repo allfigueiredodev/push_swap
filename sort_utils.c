@@ -6,30 +6,31 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 10:58:07 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:52:16 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dclist *check_cheapest(t_dclist **stack_a)
+t_dclist **check_cheapest(t_dclist **stack_a)
 {
 	t_dclist *head;
-	t_dclist *cheapest;
+	t_dclist **cheapest;
 
 	head = (*stack_a)->prev;
+	
 	cheapest = NULL;
 	while(*stack_a != head)
 	{
 		if((*stack_a)->cost == 1)
 		{
-			cheapest = *stack_a;
+			*cheapest = *stack_a;
 			return (cheapest);
 		}
-		else if(!(cheapest))
-			cheapest = *stack_a;
-		else if((*stack_a)->cost < cheapest->cost)
-			cheapest = *stack_a;
+		else if(!(*cheapest))
+			*cheapest = *stack_a;
+		else if((*stack_a)->cost < (*cheapest)->cost)
+			*cheapest = *stack_a;
 		*stack_a = (*stack_a)->next;
 	}
 	return(cheapest);

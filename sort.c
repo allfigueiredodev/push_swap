@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:32:23 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 11:13:59 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:56:38 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ void fill_b(t_dclist **stack_a, t_dclist **stack_b)
 	{
 		while((*stack_a)->target->index != 0 || (*stack_a)->index != 0)
 			shift_down_both(stack_a, stack_b);
-		if((*stack_a)->stack_a_diretion != 0)
+		if((*stack_a)->stack_a_direction != 0)
 		{
 			while((*stack_a)->index != 0)
-				shift_down_single(*stack_a, 1);
+				shift_down_single(stack_a, 1);
 		}
 		else if((*stack_a)->target->index != 0)
 		{
 			while((*stack_a)->target->index != 0)
-				shift_down_single(*stack_b, 2);
+				shift_down_single(stack_b, 2);
 		}
 		push_b(stack_a, stack_b);
 	}
@@ -67,12 +67,12 @@ void fill_b(t_dclist **stack_a, t_dclist **stack_b)
 		if((*stack_a)->index != 0)
 		{
 			while((*stack_a)->index != 0)
-				shift_up_single(*stack_a, 1);
+				shift_up_single(stack_a, 1);
 		}
 		else if((*stack_a)->target->index != 0)
 		{
 			while((*stack_a)->target->index != 0)
-				shift_up_single(*stack_b, 2);
+				shift_up_single(stack_b, 2);
 		}
 		push_b(stack_a, stack_b);
 	}
@@ -83,12 +83,12 @@ void fill_b(t_dclist **stack_a, t_dclist **stack_b)
 			if((*stack_a)->index != 0)
 			{
 				while((*stack_a)->index != 0)
-					shift_down_single(*stack_a, 1);
+					shift_down_single(stack_a, 1);
 			}
 			else if((*stack_a)->target->index != 0)
 			{
 				while((*stack_a)->target->index != 0)
-					shift_up_single(*stack_b, 2);
+					shift_up_single(stack_b, 2);
 			}
 		}
 		push_b(stack_a, stack_b);
@@ -100,12 +100,12 @@ void fill_b(t_dclist **stack_a, t_dclist **stack_b)
 			if((*stack_a)->index != 0)
 			{
 				while((*stack_a)->index != 0)
-					shift_up_single(*stack_a, 1);
+					shift_up_single(stack_a, 1);
 			}
 			else if((*stack_a)->target->index != 0)
 			{
 				while((*stack_a)->target->index != 0)
-					shift_down_single(*stack_b, 2);
+					shift_down_single(stack_b, 2);
 			}
 		}
 		push_b(stack_a, stack_b);
@@ -211,8 +211,8 @@ int sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 	{
 		set_min_max(data);
 		set_cost(*data, stack_a, stack_b);
-		fill_b(check_cheapest(stack_a));
-		if(check_early_sort(stack_a, stack_b))
+		fill_b(check_cheapest(stack_a), stack_b);
+		if(check_early_sort(*stack_a, *stack_b))
 			return(1);			
 		// push_b(*stack_a);
 		// fix_indexes(stack_a, stack_b);
@@ -221,15 +221,15 @@ int sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 	return(1);
 }
 
-int main(void)
-{
-	t_data data;
+// int main(void)
+// {
+// 	t_data data;
 
-	data.stack_a = lst_new_node(3);
-	lst_prev_next(&data.stack_a, lst_new_node(1));
-	lst_prev_next(&data.stack_a, lst_new_node(3));
-	sort_three(&data.stack_a);
-	print_dlist(data.stack_a);
+// 	data.stack_a = lst_new_node(3);
+// 	lst_prev_next(&data.stack_a, lst_new_node(2));
+// 	lst_prev_next(&data.stack_a, lst_new_node(1));
+// 	sort_three(&data.stack_a);
+// 	print_dlist(data.stack_a);
 	// lst_prev_next(&data.stack_a, lst_new_node(88));
 	// lst_prev_next(&data.stack_a, lst_new_node(33));
 	// lst_prev_next(&data.stack_a, lst_new_node(6));
@@ -248,4 +248,4 @@ int main(void)
 	// print_dlist(data.stack_b);
 	// ft_printf("upward: %d\n", b_upward_moves(data));
 	// ft_printf("downward: %d\n", b_downward_moves(data));
-}
+// }

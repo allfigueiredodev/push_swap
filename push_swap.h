@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 11:14:58 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:51:26 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,11 @@ int			check_decrescent_order(t_dclist *list);
 int			sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
 int			b_downward_moves(t_data data);
 int			b_upward_moves(t_data data);
-int			set_cost(t_data data,  t_dclist **stack_a, t_dclist **stack_b);
+void		set_cost(t_data data,  t_dclist **stack_a, t_dclist **stack_b);
 void		fix_indexes(t_dclist **stack_a, t_dclist **stack_b);
 void		sort_three(t_dclist **stack_a);
 int			check_early_sort(t_dclist *stack_a, t_dclist *stack_b);
+t_dclist	**check_cheapest(t_dclist **stack_a);
+void		fill_b(t_dclist **stack_a, t_dclist **stack_b);
 
 #endif
