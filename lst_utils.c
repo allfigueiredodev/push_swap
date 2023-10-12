@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:33:49 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/08 21:43:39 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:40:08 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void print_dlist(t_dclist *stack)
 		ft_printf("%d, \n", head->content);
 		return ;
 	}
-	ft_printf("%d, ", head->content);
+	ft_printf("%d, \n", head->content);
 	while(stack->next != head)
 	{
-		ft_printf("%d, ", stack->content);
+		ft_printf("%d, \n", stack->content);
 		stack = stack->next;
 	}
 	ft_printf("%d, \n", stack->content);

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/10 23:56:06 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:41:59 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int main(int argc, char **argv)
 		return(0);
 	}
 	if(!check_crescent_order(data.stack_a))
-		if(sort(&data, &data.stack_a, &data.stack_b))
-			
-	ft_printf("min: %d max: %d\n", data.stack_b_min->content, data.stack_b_max->content);
+		(sort(&data, &data.stack_a, &data.stack_b));
+	sort_three(&data.stack_a);
+	ft_printf("\nstack_a\n");
+	print_dlist(data.stack_a);
+	ft_printf("\nstack_b\n");
+	print_dlist(data.stack_b);
+	// while(&data.stack_b)
+	// ft_printf("min: %d max: %d\n", data.stack_b_min->content, data.stack_b_max->content);
 	free_data(&data);
 	
 	// push_b(&data.stack_a, &data.stack_b);

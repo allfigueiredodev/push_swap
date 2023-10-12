@@ -6,31 +6,30 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 14:52:16 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:55:06 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dclist **check_cheapest(t_dclist **stack_a)
+t_dclist *check_cheapest(t_dclist **stack_a)
 {
 	t_dclist *head;
-	t_dclist **cheapest;
+	t_dclist *cheapest;
 
 	head = (*stack_a)->prev;
-	
-	cheapest = NULL;
+	cheapest = *stack_a;
 	while(*stack_a != head)
 	{
+		// if(!cheapest)
+		// 	cheapest = &(*stack_a);
 		if((*stack_a)->cost == 1)
 		{
-			*cheapest = *stack_a;
+			cheapest = *stack_a;
 			return (cheapest);
 		}
-		else if(!(*cheapest))
-			*cheapest = *stack_a;
-		else if((*stack_a)->cost < (*cheapest)->cost)
-			*cheapest = *stack_a;
+		else if((*stack_a)->cost < cheapest->cost)
+			cheapest = *stack_a;
 		*stack_a = (*stack_a)->next;
 	}
 	return(cheapest);
@@ -93,11 +92,12 @@ void set_min_max(t_data *data)
 	data->stack_b = head;
 }
 
-void set_targets(t_dclist **stack_a, t_dclist **stack_b)
+void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 {
 	t_dclist *b_head;
 	t_dclist *a_head;
-
+	
+	(void)data;
 	a_head = *stack_a;
 	b_head = *stack_b;
 	while((*stack_a) != a_head->prev)
@@ -109,6 +109,8 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 			else if((*stack_b)->content > (*stack_a)->content
 			&& (*stack_b)->content < (*stack_a)->target->content)
 				(*stack_a)->target = (*stack_b);
+			else
+				(*stack_a)->target = data.stack_b_max;				
 			*stack_b = (*stack_b)->next;
 		}
 		if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
@@ -116,6 +118,8 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 		else if((*stack_b)->content > (*stack_a)->content
 		&& (*stack_b)->content < (*stack_a)->target->content)
 			(*stack_a)->target = (*stack_b);
+		else
+			(*stack_a)->target = data.stack_b_max;			
 		*stack_b = b_head;
 		*stack_a = (*stack_a)->next;
 	} 
@@ -127,6 +131,8 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 		else if((*stack_b)->content > (*stack_a)->content
 		&& (*stack_b)->content < (*stack_a)->target->content)
 			(*stack_a)->target = (*stack_b);
+		else
+			(*stack_a)->target = data.stack_b_max;	
 		*stack_b = (*stack_b)->next;
 	}
 	if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
@@ -134,6 +140,8 @@ void set_targets(t_dclist **stack_a, t_dclist **stack_b)
 	else if((*stack_b)->content > (*stack_a)->content
 	&& (*stack_b)->content < (*stack_a)->target->content)
 		(*stack_a)->target = (*stack_b);
+	else
+		(*stack_a)->target = data.stack_b_max;	
 	*stack_b = b_head;
 	*stack_a = a_head;	
 }
