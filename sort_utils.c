@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 22:55:06 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:05:17 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,56 +92,43 @@ void set_min_max(t_data *data)
 	data->stack_b = head;
 }
 
-void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
+void find_nearest(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	t_dclist *b_head;
-	t_dclist *a_head;
-	
-	(void)data;
-	a_head = *stack_a;
-	b_head = *stack_b;
-	while((*stack_a) != a_head->prev)
-	{
-		while(*stack_b != b_head->prev)
-		{
-			if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
-				(*stack_a)->target = (*stack_b);
-			else if((*stack_b)->content > (*stack_a)->content
-			&& (*stack_b)->content < (*stack_a)->target->content)
-				(*stack_a)->target = (*stack_b);
-			else
-				(*stack_a)->target = data.stack_b_max;				
-			*stack_b = (*stack_b)->next;
-		}
-		if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
-			(*stack_a)->target = (*stack_b);
-		else if((*stack_b)->content > (*stack_a)->content
-		&& (*stack_b)->content < (*stack_a)->target->content)
-			(*stack_a)->target = (*stack_b);
-		else
-			(*stack_a)->target = data.stack_b_max;			
-		*stack_b = b_head;
-		*stack_a = (*stack_a)->next;
-	} 
-	*stack_b = b_head;
-	while(*stack_b != b_head->prev)
-	{
-		if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
-			(*stack_a)->target = (*stack_b);
-		else if((*stack_b)->content > (*stack_a)->content
-		&& (*stack_b)->content < (*stack_a)->target->content)
-			(*stack_a)->target = (*stack_b);
-		else
-			(*stack_a)->target = data.stack_b_max;	
-		*stack_b = (*stack_b)->next;
-	}
 	if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
 		(*stack_a)->target = (*stack_b);
 	else if((*stack_b)->content > (*stack_a)->content
 	&& (*stack_b)->content < (*stack_a)->target->content)
 		(*stack_a)->target = (*stack_b);
 	else
-		(*stack_a)->target = data.stack_b_max;	
+		(*stack_a)->target = data.stack_b_max;
+}
+
+void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
+{
+	t_dclist *b_head;
+	t_dclist *a_head;
+	
+	a_head = *stack_a;
+	b_head = *stack_b;
+	while(*stack_a != a_head->prev)
+	{
+		while(*stack_b != b_head->prev)
+		{
+			find_nearest(data, stack_a, stack_b);
+			*stack_b = (*stack_b)->next;
+		}
+		find_nearest(data, stack_a, stack_b);
+		*stack_b = b_head;
+		*stack_a = (*stack_a)->next;
+	} 
+	*stack_b = b_head;
+	while(*stack_b != b_head->prev)
+	{
+		find_nearest(data, stack_a, stack_b);
+		*stack_b = (*stack_b)->next;
+	}
+	find_nearest(data, stack_a, stack_b);
+	(*stack_a)->target = data.stack_b_max;	
 	*stack_b = b_head;
 	*stack_a = a_head;	
 }

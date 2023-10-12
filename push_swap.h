@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 21:15:13 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:31:17 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,26 +58,28 @@ void		lst_prev_next(t_dclist **alst, t_dclist *new);
 t_dclist	*lst_new_node(int content);
 void		dc_lstclear(t_dclist **lst);
 void		swap(t_dclist **list);
-void		shift_up_single(t_dclist **list, int flag);
-void		shift_up_both(t_dclist **list_a, t_dclist **list_b);
-void		shift_down_single(t_dclist **list, int flag);
-void		shift_down_both(t_dclist **list_a, t_dclist **list_b);
+void		rx(t_dclist **list, int flag);
+void		rr(t_dclist **list_a, t_dclist **list_b);
+void		rrx(t_dclist **list, int flag);
+void		rrr(t_dclist **list_a, t_dclist **list_b);
 void		push_b(t_dclist **list_a, t_dclist **list_b);
 void		push_a(t_dclist **list_b, t_dclist **list_a);
 void		lst_add_head(t_dclist **alst, t_dclist *new);
 void		fix_index(t_dclist **list);
 void		print_dlist_index(t_dclist *stack);
-void		swap_single(t_dclist **list, int flag);
-void		swap_both(t_dclist **list_a, t_dclist **list_b);
+void		sx(t_dclist **list, int flag);
+void		ss(t_dclist **list_a, t_dclist **list_b);
 int			check_for_middle(t_dclist *list);
 void		set_min_max(t_data *data);
 void		set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b);
 int			check_crescent_order(t_dclist *list);
 int			check_decrescent_order(t_dclist *list);
-void			sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
-int			b_downward_moves(t_data data);
-int			b_upward_moves(t_data data);
-void		set_cost(t_data data,  t_dclist **stack_a, t_dclist **stack_b);
+void		sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
+int			a_downward_moves(t_data *data);
+int			a_upward_moves(t_data *data);
+int			b_downward_moves(t_data *data);
+int			b_upward_moves(t_data *data);
+void		set_cost(t_data *data,  t_dclist **stack_a, t_dclist **stack_b);
 void		fix_indexes(t_dclist **stack_a, t_dclist **stack_b);
 void		sort_three(t_dclist **stack_a);
 int			check_early_sort(t_dclist *stack_a, t_dclist *stack_b);

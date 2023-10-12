@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:51:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/09 21:40:11 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:31:17 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // sb (swap b): Swap the first 2 elements at the top of stack b.
 // Do nothing if there is only one or no elements.
 
-void swap_single(t_dclist **list, int flag)
+void sx(t_dclist **list, int flag)
 {
     t_dclist *temp;
 
@@ -43,10 +43,10 @@ void swap_single(t_dclist **list, int flag)
 
 // ss : sa and sb at the same time.
 
-void swap_both(t_dclist **list_a, t_dclist **list_b)
+void ss(t_dclist **list_a, t_dclist **list_b)
 {
-	swap_single(list_a, 0);
-	swap_single(list_b, 0);
+	sx(list_a, 0);
+	sx(list_b, 0);
 	fix_index(list_a);
 	fix_index(list_b);
 	ft_printf("ss\n");
@@ -128,7 +128,7 @@ void push_b(t_dclist **list_a, t_dclist **list_b)
 
 // rr : ra and rb at the same time.
 
-void shift_up_single(t_dclist **list, int flag)
+void rx(t_dclist **list, int flag)
 {
 	t_dclist *temp;
 
@@ -143,10 +143,10 @@ void shift_up_single(t_dclist **list, int flag)
 		ft_printf("rb\n");
 }
 
-void shift_up_both(t_dclist **list_a, t_dclist **list_b)
+void rr(t_dclist **list_a, t_dclist **list_b)
 {
-	shift_up_single(list_a, 0);
-	shift_up_single(list_b, 0);
+	rx(list_a, 0);
+	rx(list_b, 0);
 	fix_index(list_a);
 	fix_index(list_b);
 	ft_printf("rr\n");
@@ -160,7 +160,7 @@ void shift_up_both(t_dclist **list_a, t_dclist **list_b)
 
 // rrr : rra and rrb at the same time.
 
-void shift_down_single(t_dclist **list, int flag)
+void rrx(t_dclist **list, int flag)
 {
 	t_dclist *temp;
 	
@@ -175,10 +175,10 @@ void shift_down_single(t_dclist **list, int flag)
 		ft_printf("rrb\n");
 }
 
-void shift_down_both(t_dclist **list_a, t_dclist **list_b)
+void rrr(t_dclist **list_a, t_dclist **list_b)
 {
-	shift_down_single(list_a, 0);
-	shift_down_single(list_b, 0);
+	rrx(list_a, 0);
+	rrx(list_b, 0);
 	fix_index(list_a);
 	fix_index(list_b);
 	ft_printf("rrr\n");

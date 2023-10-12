@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/11 18:41:59 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:30:58 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 	// print_dlist(data.stack_b);
 	// print_dlist_index(data.stack_b);
 	// ft_printf("*****************\n");
-	// swap_both(&data.stack_a, &data.stack_b);
+	// ss(&data.stack_a, &data.stack_b);
 	// print_dlist(data.stack_a);
 	// print_dlist_index(data.stack_a);
 	// print_dlist(data.stack_b);
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
 	// print_dlist_index(data.stack_b);
 	// ft_printf("*****************\n");
 	// ft_printf("SWAP\n");
-	// swap_both(&data.stack_a, &data.stack_b);
+	// ss(&data.stack_a, &data.stack_b);
 	// print_dlist(data.stack_a);
 	// print_dlist_index(data.stack_a);
 	// print_dlist(data.stack_b);
@@ -121,7 +121,7 @@ int main(int argc, char **argv)
 	// print_dlist_index(data.stack_b);
 	// ft_printf("*****************\n");
 	// ft_printf("SWAP\n");
-	// swap_both(&data.stack_a, &data.stack_b);
+	// ss(&data.stack_a, &data.stack_b);
 	// ft_printf("*****************\n");
 	// fix_index(&data.stack_a);
 	// fix_index(&data.stack_b);
