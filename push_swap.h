@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 11:31:17 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:13:07 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,16 @@ int			check_decrescent_order(t_dclist *list);
 void		sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
 int			a_downward_moves(t_data *data);
 int			a_upward_moves(t_data *data);
-int			b_downward_moves(t_data *data);
-int			b_upward_moves(t_data *data);
-void		set_cost(t_data *data,  t_dclist **stack_a, t_dclist **stack_b);
+int			b_downward_moves(t_data *data, int is_new_edge);
+int			b_upward_moves(t_data *data, int is_new_edge);
+void		check_cost_direction(t_data *data,  t_dclist **stack_a, int is_new_edge);
+void		set_cost_direction(t_data *data,  t_dclist **stack_a, t_dclist **stack_b);
 void		fix_indexes(t_dclist **stack_a, t_dclist **stack_b);
 void		sort_three(t_dclist **stack_a);
 int			check_early_sort(t_dclist *stack_a, t_dclist *stack_b);
 t_dclist	*check_cheapest(t_dclist **stack_a);
 void		fill_b(t_dclist **stack_a, t_dclist **stack_b);
+void		reset_targets(t_dclist **stack_a);
+void		print_target(t_dclist *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:32:23 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 11:31:17 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:54:39 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,25 @@ void sort_three(t_dclist **stack_a)
 	fix_index(stack_a);
 }
 
-int b_downward_moves(t_data *data)
+int b_downward_moves(t_data *data, int is_new_edge)
 {
 	int total;
 	
-	total = dc_lstsize(data->stack_b) - data->stack_b_max->index;
+	if(is_new_edge)
+		total = dc_lstsize(data->stack_b) - data->stack_b_max->index;
+	else
+		total = dc_lstsize(data->stack_b) - data->stack_a->target->index;
 	return(total);
 }
 
-int b_upward_moves(t_data *data)
+int b_upward_moves(t_data *data, int is_new_edge)
 {
 	int total;
-	//WRONG data->stack_b_max->index,
-	//just works when *stack_a is greater or less
-	//than min and max from stack_b, needs also to verify
-	//when *stack_a target is between min and max e.g 7 > 4; 
-	total = data->stack_b_max->index;
+	
+	if(is_new_edge)
+		total = data->stack_b_max->index;
+	else
+		total = data->stack_a->target->index;
 	return(total);
 }
 
@@ -71,109 +74,51 @@ int a_upward_moves(t_data *data)
 	total = data->stack_a->index;
 	return(total);
 }
-//HERE, data is breaking ward functions because its serving a copy and not the reference
-void set_cost(t_data *data,  t_dclist **stack_a, t_dclist **stack_b)
+
+void check_cost_direction(t_data *data,  t_dclist **stack_a, int is_new_edge)
+{
+	if(b_downward_moves(data, is_new_edge) <= b_upward_moves(data, is_new_edge))
+	{
+		(*stack_a)->cost = b_downward_moves(data, is_new_edge) + 1;
+		(*stack_a)->target_direction = 0;
+	}
+	else
+	{
+		(*stack_a)->cost = b_upward_moves(data, is_new_edge) + 1;
+		(*stack_a)->target_direction = 1;
+	}
+	if(a_downward_moves(data) <= a_upward_moves(data))
+	{
+		(*stack_a)->cost += a_downward_moves(data);
+		(*stack_a)->stack_a_direction = 0;
+	}
+	else
+	{
+		(*stack_a)->cost += a_upward_moves(data);
+		(*stack_a)->stack_a_direction = 1;
+	}
+}
+
+void set_cost_direction(t_data *data,  t_dclist **stack_a, t_dclist **stack_b)
 {
 	t_dclist *head;
 	
 	head = *stack_a;
 	set_targets(*data, stack_a, stack_b);
 	fix_indexes(stack_a, stack_b);
-	if((*stack_a)->content > data->stack_b_max->content || (*stack_a)->content < data->stack_b_min->content)
-	{
-		if(b_downward_moves(data) <= b_upward_moves(data))
-		{
-			(*stack_a)->cost = b_downward_moves(data) + 1;
-			(*stack_a)->target_direction = 0;
-		}
-		else
-		{
-			(*stack_a)->cost = b_upward_moves(data) + 1;
-			(*stack_a)->target_direction = 1;
-		}
-		if(a_downward_moves(data) <= a_upward_moves(data))
-		{
-			(*stack_a)->cost += a_downward_moves(data);
-			(*stack_a)->stack_a_direction = 0;
-		}
-		else
-		{
-			(*stack_a)->cost += a_upward_moves(data);
-			(*stack_a)->stack_a_direction = 1;
-		}
-	}
+	if((*stack_a)->content > data->stack_b_max->content
+	|| (*stack_a)->content < data->stack_b_min->content)
+		check_cost_direction(data, stack_a, 1);
 	else
-	{
-		if(b_downward_moves(data) <= b_upward_moves(data))
-		{
-			(*stack_a)->cost = b_downward_moves(data) + 1;
-			(*stack_a)->target_direction = 0;
-		}
-		else
-		{
-			(*stack_a)->cost = b_upward_moves(data) + 1;
-			(*stack_a)->target_direction = 1;
-		}
-		if(a_downward_moves(data) <= a_upward_moves(data))
-		{
-			(*stack_a)->cost += a_downward_moves(data);
-			(*stack_a)->stack_a_direction = 0;
-		}
-		else
-		{
-			(*stack_a)->cost += a_upward_moves(data);
-			(*stack_a)->stack_a_direction = 1;
-		}			
-	}
+		check_cost_direction(data, stack_a, 0);
 	*stack_a = (*stack_a)->next;
  	while(*stack_a != head && dc_lstsize(*stack_a) > 3)
 	{
-		if((*stack_a)->content > data->stack_b_max->content || (*stack_a)->content < data->stack_b_min->content)
-		{
-			if(b_downward_moves(data) <= b_upward_moves(data))
-			{
-				(*stack_a)->cost = b_downward_moves(data) + 1;
-				(*stack_a)->target_direction = 0;
-			}
-			else
-			{
-				(*stack_a)->cost = b_upward_moves(data) + 1;
-				(*stack_a)->target_direction = 1;
-			}
-			if(a_downward_moves(data) <= a_upward_moves(data))
-			{
-				(*stack_a)->cost += a_downward_moves(data);
-				(*stack_a)->stack_a_direction = 0;
-			}
-			else
-			{
-				(*stack_a)->cost += a_upward_moves(data);
-				(*stack_a)->stack_a_direction = 1;
-			}
-		}
+		if((*stack_a)->content > data->stack_b_max->content
+		|| (*stack_a)->content < data->stack_b_min->content)
+			check_cost_direction(data, stack_a, 1);
 		else
-		{
-			if(b_downward_moves(data) <= b_upward_moves(data))
-			{
-				(*stack_a)->cost = b_downward_moves(data) + 1;
-				(*stack_a)->target_direction = 0;
-			}
-			else
-			{
-				(*stack_a)->cost = b_upward_moves(data) + 1;
-				(*stack_a)->target_direction = 1;
-			}
-			if(a_downward_moves(data) <= a_upward_moves(data))
-			{
-				(*stack_a)->cost += a_downward_moves(data);
-				(*stack_a)->stack_a_direction = 0;
-			}
-			else
-			{
-				(*stack_a)->cost += a_upward_moves(data);
-				(*stack_a)->stack_a_direction = 1;
-			}			
-		}
+			check_cost_direction(data, stack_a, 0);
 		*stack_a = (*stack_a)->next;
 	}
 }
@@ -185,10 +130,12 @@ void sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 	while(dc_lstsize(*stack_a) > 3)
 	{
 		set_min_max(data);
-		set_cost(data, stack_a, stack_b);
+		set_cost_direction(data, stack_a, stack_b);
+		// print_target(*stack_a);
 		fill_b(stack_a, stack_b);
 		if(check_early_sort(*stack_a, *stack_b))
 			return ;
+		// reset_targets(stack_a);
 		// push_b(*stack_a);
 		// fix_indexes(stack_a, stack_b);
 		// set_targets(stack_a, stack_b);

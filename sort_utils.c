@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 11:05:17 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:43:45 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,36 @@ void set_min_max(t_data *data)
 	data->stack_b = head;
 }
 
+// void reset_targets(t_dclist **stack_a)
+// {
+// 	t_dclist *head;
+
+// 	head = *stack_a;
+// 	*stack_a = (*stack_a)->next;
+// 	while(*stack_a != head)
+// 	{)
+// 		(*stack_a)->target = NULL;
+// 		*stack_a = (*stack_a)->next;
+// 	}
+// 	(*stack_a)->target = NULL;
+// }
+
 void find_nearest(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	if(!(*stack_a)->target && (*stack_b)->content > (*stack_a)->content)
-		(*stack_a)->target = (*stack_b);
-	else if((*stack_b)->content > (*stack_a)->content
-	&& (*stack_b)->content < (*stack_a)->target->content)
-		(*stack_a)->target = (*stack_b);
-	else
+	if((!(*stack_a)->target && dc_lstsize(*stack_b) == 2)
+	|| ((*stack_a)->content > data.stack_b_max->content
+	&& (*stack_a)->content < data.stack_b_min->content))
 		(*stack_a)->target = data.stack_b_max;
+	else if((*stack_b)->content > (*stack_a)->content)
+	{
+		if ((*stack_b)->content < (*stack_a)->target->content)
+			(*stack_a)->target = *stack_b;
+		else if ( abs((*stack_b)->content - (*stack_a)->content) <
+			abs((*stack_a)->content - (*stack_a)->target->content))
+			(*stack_a)->target = *stack_b;
+		else if ((*stack_a)->content > (*stack_a)->target->content)
+			(*stack_a)->target = *stack_b;
+	}
 }
 
 void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
@@ -128,9 +149,8 @@ void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 		*stack_b = (*stack_b)->next;
 	}
 	find_nearest(data, stack_a, stack_b);
-	(*stack_a)->target = data.stack_b_max;	
 	*stack_b = b_head;
-	*stack_a = a_head;	
+	*stack_a = a_head;
 }
 
 // int main(void)
