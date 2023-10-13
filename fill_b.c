@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:24:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 20:57:13 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 03:21:10 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void	fill_b(t_dclist **stack_a, t_dclist **stack_b)
 		push_b(stack_a, stack_b);
 		return ;
 	}
-	else if(!(*stack_a)->stack_a_direction && !(*stack_a)->target_direction)
+	else if(!cheapest->stack_a_direction && !cheapest->target_direction)
 		rotate_down_both(stack_a, stack_b);
-	else if((*stack_a)->stack_a_direction && (*stack_a)->target_direction)
+	else if(cheapest->stack_a_direction && cheapest->target_direction)
 		rotate_up_both(stack_a, stack_b);
-	else if(!(*stack_a)->stack_a_direction && (*stack_a)->target_direction)
+	else if(!cheapest->stack_a_direction && cheapest->target_direction)
 		rotate_oposite_direction_a(stack_a, stack_b);
-	else if((*stack_a)->stack_a_direction && !(*stack_a)->target_direction)
+	else if(cheapest->stack_a_direction && !cheapest->target_direction)
 		rotate_oposite_direction_b(stack_a, stack_b);
 	// ft_printf("\nstack_a\n");
 	// print_dlist(*stack_a);

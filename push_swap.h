@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 20:13:07 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:55:22 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ t_dclist	*check_cheapest(t_dclist **stack_a);
 void		fill_b(t_dclist **stack_a, t_dclist **stack_b);
 void		reset_targets(t_dclist **stack_a);
 void		print_target(t_dclist *stack);
+void		sort_decrescent(t_data data, t_dclist **list_b);
 
 #endif

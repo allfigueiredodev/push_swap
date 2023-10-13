@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 11:30:58 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:51:10 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int main(int argc, char **argv)
 	if(!check_crescent_order(data.stack_a))
 		(sort(&data, &data.stack_a, &data.stack_b));
 	sort_three(&data.stack_a);
+	sort_decrescent(data, &data.stack_b);
+	//set target using the old logic
+	//create the function to rotate the stack_a
 	ft_printf("\nstack_a\n");
 	print_dlist(data.stack_a);
 	ft_printf("\nstack_b\n");

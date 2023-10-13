@@ -1,5 +1,5 @@
 all:
-	cc push_swap.c fill_b.c sort.c check_sort.c sort_utils.c movements.c frees.c lst_utils.c validations.c init_stack.c push_swap_utils.c ./libft/*.c -Wall -Werror -Wextra -g3 && ./a.out "1 4 99 7 64 22 0 8 -3"
+	cc push_swap.c fill_a.c fill_b.c sort.c check_sort.c sort_utils.c movements.c frees.c lst_utils.c validations.c init_stack.c push_swap_utils.c ./libft/*.c -Wall -Werror -Wextra -g3 && ./a.out "1 4 99 7 64 22 0 8 -3"
 	# cc init_stack.c push_swap_utils.c ./libft/*.c -Wall -Werror -Wextra -g3 && ./a.out
 
 valgrind: all
