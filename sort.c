@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:32:23 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/13 01:48:59 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/14 01:42:46 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,23 +123,44 @@ void set_cost_direction(t_data *data,  t_dclist **stack_a, t_dclist **stack_b)
 	}
 }
 
-void sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
+int sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	while(dc_lstsize(*stack_a) > 3)
+	if(dc_lstsize(data->stack_a) == 2)
 	{
-		set_min_max(data);
-		set_cost_direction(data, stack_a, stack_b);
-		// print_target(*stack_a);
-		fill_b(stack_a, stack_b);
-		if(check_early_sort(*stack_a, *stack_b))
-			return ;
-		// reset_targets(stack_a);
-		// push_b(*stack_a);
-		// fix_indexes(stack_a, stack_b);
-		// set_targets(stack_a, stack_b);
+		if(!check_crescent_order(data->stack_a))
+			sx(&data->stack_a, 1);
+		return (1);
 	}
+	if(dc_lstsize(data->stack_a) == 3)
+	{
+		sort_three(&data->stack_a);
+		return(1);
+	}
+	if(dc_lstsize(data->stack_a) == 4)
+	{
+		push_b(stack_a, stack_b);
+		set_min_max(data);
+		sort_three(&data->stack_a);
+		set_targets_to_push_back(*data, stack_a, stack_b);
+		mergin_back(*data, stack_a, stack_b);
+		sort_crescent(*data, &data->stack_a);
+		if(check_crescent_order(*stack_a))
+			return(1);		
+	} 
+	if(dc_lstsize(*stack_a) >= 5)
+	{
+		push_b(stack_a, stack_b);
+		push_b(stack_a, stack_b);
+		while(dc_lstsize(*stack_a) > 3)
+		{
+			set_min_max(data);
+			set_cost_direction(data, stack_a, stack_b);
+			fill_b(stack_a, stack_b);
+			if(check_early_sort(*stack_a, *stack_b))
+				return (1);
+		}		
+	}
+	return(0);
 }
 
 // int main(void)

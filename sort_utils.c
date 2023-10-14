@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/13 01:45:36 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:16:53 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,20 +115,6 @@ void find_nearest(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 		if((*stack_a)->target && (*stack_b)->content > (*stack_a)->target->content)
 			(*stack_a)->target = *stack_b;
 	}
-	// if((!(*stack_a)->target && dc_lstsize(*stack_b) == 2)
-	// || ((*stack_a)->content > data.stack_b_max->content
-	// && (*stack_a)->content < data.stack_b_min->content))
-	// 	(*stack_a)->target = data.stack_b_max;
-	// else if((*stack_b)->content > (*stack_a)->content)
-	// {
-	// 	if ((*stack_b)->content < (*stack_a)->target->content)
-	// 		(*stack_a)->target = *stack_b;
-	// 	else if ( abs((*stack_b)->content - (*stack_a)->content) <
-	// 		abs((*stack_a)->content - (*stack_a)->target->content))
-	// 		(*stack_a)->target = *stack_b;
-	// 	else if ((*stack_a)->content > (*stack_a)->target->content)
-	// 		(*stack_a)->target = *stack_b;
-	// }
 }
 
 void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)

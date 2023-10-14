@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:12 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/08 21:46:52 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 23:12:03 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,33 @@ int init_data_from_arguments(int argc, char **argv, t_data *data)
 {
 	int total_arguments;
 	int i;
-	int nbr;
+	long nbr;
 
 	total_arguments = argc - 1;
-	i = 0;
+	i = 1;
 	while(i <= total_arguments)
 	{
 
 		nbr = ft_atol(argv[i]);
 		if(nbr < INT_MIN || nbr > INT_MAX)
 			return(0);
-		if(check_for_digit(argv[i]) && !data->stack_a->content)
+		if(!data->stack_a->content)
 		{
-			free(data->stack_a);
-			data->stack_a = lst_new_node(nbr);
+			if(!check_for_digit(argv[i]))
+				return(0);
+			else
+			{
+				free(data->stack_a);
+				data->stack_a = lst_new_node(nbr);
+			}
 		}
-		else if(check_for_digit(argv[i]) && data->stack_a)
-			lst_prev_next(&(data->stack_a), lst_new_node(nbr));
+		else if(data->stack_a)
+		{
+			if(!check_for_digit(argv[i]))
+				return(0);
+			else
+				lst_prev_next(&(data->stack_a), lst_new_node(nbr));
+		}
 		i++;
 	}
 	return(1);
@@ -60,14 +70,14 @@ int init_data_from_string(char *nbr_list, t_data *data)
 	int i;
 	char **nbrs;
 	long atoied;
-	if(!nbr_list)
+	if(!ft_strlen(nbr_list))
 		return(0);
 	nbrs = ft_split(nbr_list, ' ');
 	i = 0;
 	while(nbrs[i])
 	{
 		atoied = ft_atol(nbrs[i]);
-		if(atoied < INT_MIN || atoied > INT_MAX)
+		if(atoied < INT_MIN || atoied > INT_MAX || !check_for_digit(nbrs[i]))
 		{
 			free_nbrs(nbrs);
 			return(0);

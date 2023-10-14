@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:29:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/08 16:31:31 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:58:41 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	free_nbrs(char **nbrs)
 void free_data(t_data *data)
 {
 	dc_lstclear(&data->stack_a);
-	dc_lstclear(&data->stack_b);
+	if(*(&data->stack_b))
+		dc_lstclear(&data->stack_b);
 }

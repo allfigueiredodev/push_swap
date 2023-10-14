@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:03:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/13 11:51:10 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/14 00:35:59 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,112 +25,25 @@ int main(int argc, char **argv)
 		free_data(&data);
 		return(0);
 	}
-	if(!check_crescent_order(data.stack_a))
-		(sort(&data, &data.stack_a, &data.stack_b));
-	sort_three(&data.stack_a);
+	if(check_crescent_order(data.stack_a))
+	{
+		free_data(&data);
+		return(0);
+	}
+	else
+	{
+		if(sort(&data, &data.stack_a, &data.stack_b))
+		{
+			free_data(&data);
+			return(0);
+		}
+	}
+	// sort_three(&data.stack_a);
 	sort_decrescent(data, &data.stack_b);
-	//set target using the old logic
-	//create the function to rotate the stack_a
+	set_targets_to_push_back(data, &data.stack_a, &data.stack_b);
+	mergin_back(data, &data.stack_a, &data.stack_b);
 	ft_printf("\nstack_a\n");
 	print_dlist(data.stack_a);
 	ft_printf("\nstack_b\n");
 	print_dlist(data.stack_b);
-	// while(&data.stack_b)
-	// ft_printf("min: %d max: %d\n", data.stack_b_min->content, data.stack_b_max->content);
-	free_data(&data);
-	
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist(data.stack_b);
-	// set_targets(&data.stack_a, &data.stack_b);
-	// ft_printf("%d\n", data.stack_a->target->content);
-	// ft_printf("%d\n", data.stack_a->next->target->content);
-	// ft_printf("%d\n", data.stack_a->next->next->target->content);	
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// push_b(&data.stack_a, &data.stack_b);
-	// print_dlist(data.stack_b);
-	// set_min_max(&data);
-	// ft_printf("min: %d\n", data.stack_b_min);
-	// ft_printf("max: %d\n", data.stack_b_max);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// ft_printf("*****************\n");
-	// push_b(&data.stack_a, &data.stack_b);
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// push_b(&data.stack_a, &data.stack_b);
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// push_b(&data.stack_a, &data.stack_b);
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// push_b(&data.stack_a, &data.stack_b);
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// ss(&data.stack_a, &data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// ft_printf("SWAP\n");
-	// ss(&data.stack_a, &data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
-	// ft_printf("SWAP\n");
-	// ss(&data.stack_a, &data.stack_b);
-	// ft_printf("*****************\n");
-	// fix_index(&data.stack_a);
-	// fix_index(&data.stack_b);
-	// print_dlist(data.stack_a);
-	// print_dlist_index(data.stack_a);
-	// print_dlist(data.stack_b);
-	// print_dlist_index(data.stack_b);
-	// ft_printf("*****************\n");
 }

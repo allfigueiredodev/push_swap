@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:50:56 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/03 15:47:04 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/13 22:55:54 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,24 @@
 
 int	check_for_digit(char *c)
 {
-	while(*c == '+' || *c == '-')
+	if(*c == '+' || *c == '-')
+	{
 		c++;
-	if (*c >= '0' && *c <= '9')
-		return (1);
-	return (0);
+		if(*c < '0' || *c > '9')
+			return (0); 
+	}
+	else if(*c && *c >= '0' && *c <= '9')
+	{
+		while(*c)
+		{
+			if(*c < '0' || *c > '9')
+				return (0);
+			c++;
+		}		
+	}
+	else
+		return(0);
+	return (1);
 }
 
 void count_list_size(t_data *data)
