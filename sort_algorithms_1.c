@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:51:19 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/15 05:29:43 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/15 07:47:16 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void sort_four(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 	sort_three(&data->stack_a);
 	set_targets_to_push_back(*data, stack_a, stack_b);
 	mergin_back(*data, stack_a, stack_b);
-	sort_crescent(*data, &data->stack_a);
+	// sort_crescent(*data, &data->stack_a);
 	if(check_crescent_order(*stack_a))
 		return ;	
 }
@@ -69,17 +69,21 @@ void sort_big_stack(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 		// print_dlist(data->stack_a);
 		// ft_printf("\nstack_b\n");
 		// print_dlist(data->stack_b);
-		// if(check_early_sort(*stack_a, *stack_b))
-		// 	return ;
+		if(check_early_sort(*stack_a, *stack_b))
+		{
+			set_targets_to_push_back(*data, stack_a, stack_b);
+			mergin_back(*data, stack_a, stack_b);
+			return ;
+		}
 	}
 	sort_three(stack_a);
 	sort_decrescent(*data, stack_b);
-	// ft_printf("\nstack_a\n");
-	// print_dlist(data->stack_a);
+	set_targets_to_push_back(*data, stack_a, stack_b);
+	mergin_back(*data, stack_a, stack_b);
+	ft_printf("\nstack_a\n");
+	print_dlist(data->stack_a);
 	// ft_printf("\nstack_b\n");
 	// print_dlist(data->stack_b);
-	// set_targets_to_push_back(*data, stack_a, stack_b);
-	// mergin_back(*data, stack_a, stack_b);
 }
 
 int sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
@@ -90,7 +94,7 @@ int sort(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 		sort_three(&data->stack_a);
 	else if(dc_lstsize(data->stack_a) == 4)
 		sort_four(data, stack_a, stack_b);
-	else if(dc_lstsize(*stack_a) >= 5)
+	else if(dc_lstsize(*stack_a) > 5)
 		sort_big_stack(data, stack_a, stack_b);
 	return(0);
 }

@@ -13,7 +13,7 @@ sort_algorithms_2.c move_calculations.c
 # OBJS = $(SRC:.c=.o)
 
 all: $(NAME)
-	$(CC) $(SRC) ./libft/*.c $(FLAGS) -g3 && ./a.out "5 12 8 4 2 7 16 20 1 3 18 11 6 15 13 19 14 10 17 9"
+	$(CC) $(SRC) ./libft/*.c $(FLAGS) -g3 && ./a.out "7 1 -10 3 5 8 -2 6 4 9"
 # why 0 at the beggin does not appear
 
 # $(LIBFT_LIB):

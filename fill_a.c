@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:14:39 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/14 18:25:53 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/15 08:13:57 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void find_nearest_above(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 			(*stack_a)->target = *stack_a;
 		else if ((*stack_b)->content < (*stack_a)->target->content)
 			(*stack_a)->target = *stack_b;
-		else if ( abs((*stack_b)->content - (*stack_a)->content) <
-			abs((*stack_a)->content - (*stack_a)->target->content))
+		else if (ft_abs((*stack_b)->content - (*stack_a)->content) <
+			ft_abs((*stack_a)->content - (*stack_a)->target->content))
 			(*stack_a)->target = *stack_b;
 		else if ((*stack_a)->content > (*stack_a)->target->content)
 			(*stack_a)->target = *stack_b;
@@ -60,12 +60,21 @@ void set_targets_to_push_back(t_data data, t_dclist **stack_a, t_dclist **stack_
 
 void mergin_back(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	push_a(stack_b, stack_a);
+	t_dclist *last;
+
+	last = (*stack_a)->prev;
+	if(last->content > (*stack_b)->content)
+	{
+		rrx(stack_a, 1);
+		push_a(stack_b, stack_a);
+	}
+	else
+		push_a(stack_b, stack_a);
 	while(*stack_b)
 	{
-		sort_crescent(data, stack_a);
+		sort_crescent(data, stack_a, stack_b);
 		if(*stack_b)
 			push_a(stack_b, stack_a);
 	}
-	sort_crescent(data, stack_a);
+	sort_crescent(data, stack_a, stack_b);
 }

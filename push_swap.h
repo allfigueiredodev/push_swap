@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:09:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/14 15:55:26 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/15 06:26:07 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		sort_decrescent(t_data data, t_dclist **list_b);
 void		set_targets_to_push_back(t_data data, t_dclist **stack_a, t_dclist **stack_b);
 void		find_nearest_above(t_data data, t_dclist **stack_a, t_dclist **stack_b);
 void		mergin_back(t_data data, t_dclist **stack_a, t_dclist **stack_b);
-void		sort_crescent(t_data data, t_dclist **list_a);
+void		sort_crescent(t_data data, t_dclist **list_a, t_dclist **list_b);
 void		sort_two(t_data *data);
 void		sort_three(t_dclist **stack_a);
 void		sort_four(t_data *data, t_dclist **stack_a, t_dclist **stack_b);
