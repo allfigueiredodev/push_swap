@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:14:39 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/14 01:56:16 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:25:53 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,65 +58,6 @@ void set_targets_to_push_back(t_data data, t_dclist **stack_a, t_dclist **stack_
 	*stack_a = a_head;
 }
 
-int downward_path(t_data data, t_dclist *list_b)
-{
-	int total;
-
-	total = dc_lstsize(list_b) - data.stack_b_max->index;
-	return (total);
-}
-
-// int upward_path(t_data data, t_dclist *list_b)
-// {
-// 	int total;
-
-// 	total = data.stack_b_max->index;
-// 	return (total);
-// }
-
-int check_shortest_path(t_data data, t_dclist *list_b)
-{
-	if(downward_path(data, list_b) < data.stack_b_max->index)
-		return(0);
-	return(1);
-}
-
-void sort_decrescent(t_data data, t_dclist **list_b)
-{
-	t_dclist *head;
-
-	fix_index(list_b);
-	head = *list_b;
-	if(!check_decrescent_order(*list_b))
-	{
-		if(!check_shortest_path(data, *list_b))
-		{
-			while(*list_b != data.stack_b_max)
-				rrx(list_b, 2);	
-		}
-		else
-		{
-			while(*list_b != data.stack_b_max)
-				rx(list_b, 2);
-		}		
-	}
-}
-
-void sort_crescent(t_data data, t_dclist **list_a)
-{
-	(void)data;
-	t_dclist *last;
-	
-	last = (*list_a)->prev;
-	if(last->target == *list_a)
-	{
-		while(last->target == last->prev->target && !check_crescent_order(*list_a))
-			rrx(list_a, 1);
-		if(!check_crescent_order(*list_a))
-			rrx(list_a, 1);
-	}
-}
-
 void mergin_back(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 {
 	push_a(stack_b, stack_a);
@@ -125,16 +66,6 @@ void mergin_back(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 		sort_crescent(data, stack_a);
 		if(*stack_b)
 			push_a(stack_b, stack_a);
-		// if(check_crescent_order(*stack_a))
-		// {
-		// 	push_a(stack_b,	stack_a);
-		// 	sort_crescent(data,	stack_a);
-		// }
-		// else
-		// {
-		// 	while(*stack_b)
-		// 		push_a(stack_b,	stack_a);
-		// }
 	}
 	sort_crescent(data, stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:24:30 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/13 03:21:10 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:30:49 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void rotate_down_both(t_dclist **stack_a, t_dclist **stack_b)
 {
-	while((*stack_a)->target->index != 0 || (*stack_a)->index != 0)
-		rrr(stack_a, stack_b);
+	if((*stack_a)->target->index != 0 && (*stack_a)->index != 0)
+	{
+		while((*stack_a)->target->index != 0 || (*stack_a)->index != 0)
+			rrr(stack_a, stack_b);		
+	}
 	if((*stack_a)->stack_a_direction != 0)
 	{
 		while((*stack_a)->index != 0)
@@ -31,8 +34,11 @@ void rotate_down_both(t_dclist **stack_a, t_dclist **stack_b)
 
 void rotate_up_both(t_dclist **stack_a, t_dclist **stack_b)
 {
-	while((*stack_a)->target->index != 0 || (*stack_a)->index != 0)
-		rr(stack_a, stack_b);
+	if((*stack_a)->target->index != 0 && (*stack_a)->index != 0)
+	{
+		while((*stack_a)->target->index != 0 || (*stack_a)->index != 0)
+			rr(stack_a, stack_b);		
+	}
 	if((*stack_a)->index != 0)
 	{
 		while((*stack_a)->index != 0)
@@ -86,7 +92,7 @@ void	fill_b(t_dclist **stack_a, t_dclist **stack_b)
 {
 	t_dclist *cheapest; 
 	
-	cheapest = check_cheapest(stack_a);
+	cheapest = check_cheapest(*stack_a);
 	if((*stack_a)->cost == 1)
 	{
 		push_b(stack_a, stack_b);
@@ -100,8 +106,4 @@ void	fill_b(t_dclist **stack_a, t_dclist **stack_b)
 		rotate_oposite_direction_a(stack_a, stack_b);
 	else if(cheapest->stack_a_direction && !cheapest->target_direction)
 		rotate_oposite_direction_b(stack_a, stack_b);
-	// ft_printf("\nstack_a\n");
-	// print_dlist(*stack_a);
-	// ft_printf("\nstack_b\n");
-	// print_dlist(*stack_b);
 }

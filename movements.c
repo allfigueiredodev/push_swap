@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:51:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/12 11:31:17 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:57:48 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void push_b(t_dclist **list_a, t_dclist **list_b)
 	}
 	else
 		lst_add_head(list_b, temp);
-	fix_index(list_a);
+	fix_index(list_a); //fix_indexes
 	fix_index(list_b);
 	ft_printf("pb\n");
 }

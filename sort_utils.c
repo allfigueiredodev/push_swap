@@ -6,32 +6,57 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:01:11 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/13 15:16:53 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/15 03:20:53 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dclist *check_cheapest(t_dclist **stack_a)
+t_dclist *pick_closest_neighbour(t_dclist *stack_a, t_dclist *stack_b)
+{
+	t_dclist *closest;
+	t_dclist *head;
+	int goal;
+
+	goal = stack_a->content;
+	head = stack_b;
+	closest = NULL;
+	stack_b = stack_b->next;
+	while(stack_b != head)
+	{
+		if(stack_b->content < goal && !closest)
+			closest = stack_b;
+		else if(stack_b->content < goal && stack_b->content > closest->content)
+			closest = stack_b;
+		stack_b = stack_b->next;
+	}
+		if(stack_b->content < goal && !closest)
+			closest = stack_b;
+		else if(stack_b->content < goal && stack_b->content > closest->content)
+			closest = stack_b;
+	return(closest);
+}
+
+t_dclist *check_cheapest(t_dclist *stack_a)
 {
 	t_dclist *head;
 	t_dclist *cheapest;
 
-	head = (*stack_a)->prev;
-	cheapest = *stack_a;
-	while(*stack_a != head)
+	head = stack_a->prev;
+	cheapest = stack_a;
+	while(stack_a != head)
 	{
-		// if(!cheapest)
-		// 	cheapest = &(*stack_a);
-		if((*stack_a)->cost == 1)
+		if(stack_a->cost == 1)
 		{
-			cheapest = *stack_a;
+			cheapest = stack_a;
 			return (cheapest);
 		}
-		else if((*stack_a)->cost < cheapest->cost)
-			cheapest = *stack_a;
-		*stack_a = (*stack_a)->next;
+		else if(stack_a->cost < cheapest->cost)
+			cheapest = stack_a;
+		stack_a = stack_a->next;
 	}
+		if(stack_a->cost < cheapest->cost)
+			cheapest = stack_a;
 	return(cheapest);
 }
 
@@ -92,29 +117,27 @@ void set_min_max(t_data *data)
 	data->stack_b = head;
 }
 
-// void reset_targets(t_dclist **stack_a)
-// {
-// 	t_dclist *head;
-
-// 	head = *stack_a;
-// 	*stack_a = (*stack_a)->next;
-// 	while(*stack_a != head)
-// 	{
-// 		(*stack_a)->target = NULL;
-// 		*stack_a = (*stack_a)->next;
-// 	}
-// 	(*stack_a)->target = NULL;
-// }
-
 void find_nearest(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	if(!(*stack_a)->target || (*stack_a)->content > data.stack_b_max->content || (*stack_a)->content < data.stack_b_min->content)
+	(*stack_a)->target = NULL; 
+	if(!(*stack_a)->target && ((*stack_a)->content > data.stack_b_max->content
+	|| (*stack_a)->content < data.stack_b_min->content))
 		(*stack_a)->target = data.stack_b_max;
-	else if((*stack_a)->content < data.stack_b_max->content && (*stack_a)->content > (*stack_b)->content)
-	{
-		if((*stack_a)->target && (*stack_b)->content > (*stack_a)->target->content)
-			(*stack_a)->target = *stack_b;
-	}
+	else if(!(*stack_a)->target && (*stack_a)->content < data.stack_b_max->content
+	&& (*stack_a)->content > data.stack_b_min->content)
+		(*stack_a)->target = pick_closest_neighbour(*stack_a, *stack_b);
+	// else if((*stack_a)->content > data.stack_b_max->content
+	// || (*stack_a)->content < data.stack_b_min->content)
+	// 	(*stack_a)->target = data.stack_b_max;
+	// else if((*stack_a)->content < data.stack_b_max->content
+	// && (*stack_a)->content > data.stack_b_min->content)
+	// {
+	// 	if(((*stack_a)->content > (*stack_b)->content)
+	// 	&& (ft_abs((*stack_a)->content - (*stack_b)->content) < ft_abs((*stack_a)->content - (*stack_a)->target->content)))
+	// 		(*stack_a)->target = *stack_b;
+	// }
+	// else
+	// 	(*stack_a)->target = pick_closest_neighbour(*stack_a, *stack_b);
 }
 
 void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
@@ -126,68 +149,10 @@ void set_targets(t_data data, t_dclist **stack_a, t_dclist **stack_b)
 	b_head = *stack_b;
 	while(*stack_a != a_head->prev)
 	{
-		while(*stack_b != b_head->prev)
-		{
-			find_nearest(data, stack_a, stack_b);
-			*stack_b = (*stack_b)->next;
-		}
 		find_nearest(data, stack_a, stack_b);
-		*stack_b = b_head;
 		*stack_a = (*stack_a)->next;
 	} 
-	*stack_b = b_head;
-	while(*stack_b != b_head->prev)
-	{
-		find_nearest(data, stack_a, stack_b);
-		*stack_b = (*stack_b)->next;
-	}
 	find_nearest(data, stack_a, stack_b);
 	*stack_b = b_head;
 	*stack_a = a_head;
 }
-
-// int main(void)
-// {
-// 	t_data data;
-// 	t_dclist *head;
-// 	t_dclist *result;
-
-// 	data.stack_a = lst_new_node(1);
-// 	lst_prev_next(&data.stack_a, lst_new_node(4));
-// 	lst_prev_next(&data.stack_a, lst_new_node(99));
-// 	lst_prev_next(&data.stack_a, lst_new_node(7));
-// 	lst_prev_next(&data.stack_a, lst_new_node(64));
-// 	lst_prev_next(&data.stack_a, lst_new_node(22));
-// 	lst_prev_next(&data.stack_a, lst_new_node(0));
-// 	lst_prev_next(&data.stack_a, lst_new_node(8));
-// 	lst_prev_next(&data.stack_a, lst_new_node(-3));
-// 	head = data.stack_a;
-// 	data.stack_a->cost = 30;
-// 	data.stack_a = data.stack_a->next;
-// 	while(data.stack_a != head)
-// 	{
-// 		data.stack_a->cost = data.stack_a->prev->cost + 1;
-// 		data.stack_a = data.stack_a->next;
-// 	}
-// 		data.stack_a->cost = 15;
-// 	result = check_cheapest(&head);
-// 	ft_printf("cost: %d\n", result->cost);
-	
-// 	push_b(&data.stack_a, &data.stack_b);
-// 	push_b(&data.stack_a, &data.stack_b);
-// 	push_b(&data.stack_a, &data.stack_b);
-// 	push_b(&data.stack_a, &data.stack_b);
-// 	push_b(&data.stack_a, &data.stack_b);
-// 	set_min_max(&data);
-// 	print_dlist(data.stack_a);
-// 	print_dlist(data.stack_b);
-// 	set_targets(&data.stack_a, &data.stack_b);
-// 	head = data.stack_a;
-// 	ft_printf("content: %d, target: %d \n", data.stack_a->content, data.stack_a->target->content);
-// 	data.stack_a = data.stack_a->next;
-// 	while(head != data.stack_a)
-// 	{
-// 		ft_printf("content: %d, target: %d \n", data.stack_a->content, data.stack_a->target->content);
-// 		data.stack_a = data.stack_a->next;
-// 	}
-// }
