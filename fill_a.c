@@ -6,75 +6,122 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:14:39 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/15 08:13:57 by aperis-p         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:40:15 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void find_nearest_above(t_data data, t_dclist **stack_a, t_dclist **stack_b)
+void	set_min_max_a(t_data *data)
 {
-	(void)data;
-	if((*stack_b)->content > (*stack_a)->content || !(*stack_a)->target)
+	t_dclist	*min;
+	t_dclist	*max;
+	t_dclist	*head;
+
+	min = data->stack_a;
+	max = data->stack_a;
+	head = data->stack_a;
+	if (data->stack_a->content < min->content)
+		min = data->stack_a;
+	else if (data->stack_a->content > max->content)
+		max = data->stack_a;
+	data->stack_a = data->stack_a->next;
+	while (data->stack_a != head)
 	{
-		if(!(*stack_a)->target)
-			(*stack_a)->target = *stack_a;
-		else if ((*stack_b)->content < (*stack_a)->target->content)
-			(*stack_a)->target = *stack_b;
-		else if (ft_abs((*stack_b)->content - (*stack_a)->content) <
-			ft_abs((*stack_a)->content - (*stack_a)->target->content))
-			(*stack_a)->target = *stack_b;
-		else if ((*stack_a)->content > (*stack_a)->target->content)
-			(*stack_a)->target = *stack_b;
+		if (data->stack_a->content < min->content)
+			min = data->stack_a;
+		else if (data->stack_a->content > max->content)
+			max = data->stack_a;
+		data->stack_a = data->stack_a->next;
 	}
+	data->stack_b_min = min;
+	data->stack_b_max = max;
+	data->stack_a = head;
 }
 
-void set_targets_to_push_back(t_data data, t_dclist **stack_a, t_dclist **stack_b)
+t_dclist	*pick_closest_neighbour_below(t_dclist *stack_a, t_dclist *stack_b)
 {
-	t_dclist *b_head;
-	t_dclist *a_head;
-	
-	a_head = *stack_a;
-	b_head = *stack_b;
-	while(*stack_a != a_head->prev)
+	t_dclist	*closest;
+	t_dclist	*head;
+	int			goal;
+
+	goal = stack_b->content;
+	head = stack_a;
+	closest = NULL;
+	stack_a = stack_a->next;
+	while (stack_a != head)
 	{
-		while(*stack_b != b_head->prev)
-		{
-			find_nearest_above(data, stack_a, stack_b);
-			*stack_b = (*stack_b)->next;
-		}
-		find_nearest_above(data, stack_a, stack_b);
-		*stack_b = b_head;
-		*stack_a = (*stack_a)->next;
-	} 
-	*stack_b = b_head;
-	while(*stack_b != b_head->prev)
-	{
-		find_nearest_above(data, stack_a, stack_b);
-		*stack_b = (*stack_b)->next;
+		if (stack_a->content > goal && !closest)
+			closest = stack_a;
+		else if (stack_a->content > goal && stack_a->content < closest->content)
+			closest = stack_a;
+		stack_a = stack_a->next;
 	}
-	find_nearest_above(data, stack_a, stack_b);
-	*stack_b = b_head;
-	*stack_a = a_head;
+	if (stack_a->content > goal && !closest)
+		closest = stack_a;
+	else if (stack_a->content > goal && stack_a->content < closest->content)
+		closest = stack_a;
+	return (closest);
 }
 
-void mergin_back(t_data data, t_dclist **stack_a, t_dclist **stack_b)
+void	min_to_head(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
 {
-	t_dclist *last;
-
-	last = (*stack_a)->prev;
-	if(last->content > (*stack_b)->content)
-	{
-		rrx(stack_a, 1);
+	if (*stack_a == data->stack_b_min)
 		push_a(stack_b, stack_a);
-	}
 	else
-		push_a(stack_b, stack_a);
-	while(*stack_b)
 	{
-		sort_crescent(data, stack_a, stack_b);
-		if(*stack_b)
-			push_a(stack_b, stack_a);
+		if (downward_moves(data,
+				data->stack_b_min) <= upward_moves(data->stack_b_min))
+		{
+			while (*stack_a != data->stack_b_min)
+				rrx(stack_a, 1);
+		}
+		else
+		{
+			while (*stack_a != data->stack_b_min)
+				rx(stack_a, 1);
+		}
+		push_a(stack_b, stack_a);
 	}
-	sort_crescent(data, stack_a, stack_b);
+}
+
+void	target_to_head(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
+{
+	t_dclist	*closest;
+
+	closest = pick_closest_neighbour_below(*stack_a, *stack_b);
+	if (*stack_a == closest)
+		push_a(stack_b, stack_a);
+	else
+	{
+		if (downward_moves(data, closest) <= upward_moves(closest))
+		{
+			while (*stack_a != closest)
+				rrx(stack_a, 1);
+		}
+		else
+		{
+			while (*stack_a != closest)
+				rx(stack_a, 1);
+		}
+		push_a(stack_b, stack_a);
+	}
+}
+
+void	mergin_back(t_data *data, t_dclist **stack_a, t_dclist **stack_b)
+{
+	set_min_max_a(data);
+	while (*stack_b)
+	{
+		fix_index(stack_a);
+		if ((*stack_b)->content > data->stack_b_max->content
+			|| (*stack_b)->content < data->stack_b_min->content)
+		{
+			min_to_head(data, stack_a, stack_b);
+		}
+		else
+			target_to_head(data, stack_a, stack_b);
+		set_min_max_a(data);
+	}
+	sort_crescent(data, stack_a);
 }

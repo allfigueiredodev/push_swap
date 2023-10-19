@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   sort_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 16:50:56 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/17 17:30:45 by aperis-p         ###   ########.fr       */
+/*   Created: 2023/10/17 17:25:48 by aperis-p          #+#    #+#             */
+/*   Updated: 2023/10/17 17:28:09 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_for_digit(char *c)
+void	fix_indexes(t_dclist **stack_a, t_dclist **stack_b)
 {
-	if (*c == '+' || *c == '-')
+	fix_index(stack_a);
+	fix_index(stack_b);
+}
+
+void	fix_index(t_dclist **list)
+{
+	t_dclist	*head;
+
+	if (!(*list))
+		return ;
+	head = *list;
+	(*list)->index = 0;
+	*list = (*list)->next;
+	while (*list != head)
 	{
-		c++;
-		if (*c < '0' || *c > '9')
-			return (0);
+		(*list)->index = (*list)->prev->index + 1;
+		*list = (*list)->next;
 	}
-	else if (*c && *c >= '0' && *c <= '9')
-	{
-		while (*c)
-		{
-			if (*c < '0' || *c > '9')
-				return (0);
-			c++;
-		}
-	}
-	else
-		return (0);
-	return (1);
 }

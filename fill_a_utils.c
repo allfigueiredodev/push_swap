@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   fill_a_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 16:50:56 by aperis-p          #+#    #+#             */
-/*   Updated: 2023/10/17 17:30:45 by aperis-p         ###   ########.fr       */
+/*   Created: 2023/10/17 17:59:15 by aperis-p          #+#    #+#             */
+/*   Updated: 2023/10/17 18:00:30 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_for_digit(char *c)
+int	downward_moves(t_data *data, t_dclist *node)
 {
-	if (*c == '+' || *c == '-')
-	{
-		c++;
-		if (*c < '0' || *c > '9')
-			return (0);
-	}
-	else if (*c && *c >= '0' && *c <= '9')
-	{
-		while (*c)
-		{
-			if (*c < '0' || *c > '9')
-				return (0);
-			c++;
-		}
-	}
-	else
-		return (0);
-	return (1);
+	int	total;
+
+	total = dc_lstsize(data->stack_a) - node->index;
+	return (total);
+}
+
+int	upward_moves(t_dclist *node)
+{
+	int	total;
+
+	total = node->index;
+	return (total);
 }
